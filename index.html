@@ -1521,7 +1521,7 @@
 
       .symbols.has-scroll-motion {
         overflow: clip;
-        min-height: 170svh;
+        min-height: 380svh;
         padding: 0;
       }
 
@@ -1649,7 +1649,7 @@
 
       .award-stage.is-three-ready .award-canvas { opacity: 1; }
       .award-stage.is-interactive .award-canvas { cursor: grab; }
-      .award-stage.is-object-hovered .award-canvas { cursor: pointer; }
+      .award-stage.is-interactive .award-canvas:active { cursor: grabbing; }
 
       .award-stage.is-three-ready .rings-art,
       .award-stage.is-three-ready .certificate-art,
@@ -1706,6 +1706,106 @@
         font-size: 9px;
         font-weight: 800;
         letter-spacing: 0.12em;
+      }
+
+      .stage-product {
+        position: absolute;
+        top: 64px;
+        left: 24px;
+        z-index: 5;
+        width: min(270px, 42%);
+        pointer-events: none;
+      }
+
+      .stage-product-index {
+        display: block;
+        margin-bottom: 9px;
+        color: #ef5660;
+        font-size: 8px;
+        font-weight: 800;
+        letter-spacing: 0.17em;
+        text-transform: uppercase;
+      }
+
+      .stage-product-title {
+        display: block;
+        color: white;
+        font-size: clamp(25px, 2.8vw, 42px);
+        font-weight: 800;
+        letter-spacing: -0.055em;
+        line-height: 0.92;
+        text-transform: uppercase;
+        transition: opacity 180ms ease, transform 180ms ease;
+      }
+
+      .stage-product-description {
+        display: block;
+        max-width: 230px;
+        margin-top: 13px;
+        color: rgba(255, 255, 255, 0.52);
+        font-size: 10px;
+        font-weight: 600;
+        line-height: 1.55;
+        transition: opacity 180ms ease, transform 180ms ease;
+      }
+
+      .award-stage.is-changing .stage-product-title,
+      .award-stage.is-changing .stage-product-description {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      .stage-controls {
+        position: absolute;
+        right: 22px;
+        top: 22px;
+        z-index: 7;
+        display: flex;
+        gap: 8px;
+      }
+
+      .stage-arrow {
+        display: grid;
+        width: 42px;
+        height: 42px;
+        padding: 0;
+        place-items: center;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 50%;
+        color: white;
+        background: rgba(3, 12, 21, 0.46);
+        backdrop-filter: blur(10px);
+        cursor: pointer;
+        font: inherit;
+        font-size: 16px;
+        transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
+      }
+
+      .stage-arrow:hover {
+        border-color: rgba(239, 86, 96, 0.9);
+        background: rgba(213, 45, 53, 0.72);
+        transform: translateY(-2px);
+      }
+
+      .stage-progress {
+        position: absolute;
+        right: 24px;
+        bottom: 45px;
+        left: 24px;
+        z-index: 5;
+        height: 1px;
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.12);
+        pointer-events: none;
+      }
+
+      .stage-progress::after {
+        content: "";
+        display: block;
+        width: var(--stage-progress, 25%);
+        height: 100%;
+        background: linear-gradient(90deg, #d52d35, #ef6b72);
+        transition: width 360ms cubic-bezier(.22, .7, .18, 1);
       }
 
       .stage-focus {
@@ -2626,10 +2726,17 @@
         .award-stage {
           min-height: 500px;
           margin-top: 38px;
+          touch-action: pan-y;
         }
         .stage-label { top: 16px; left: 17px; }
         .stage-axis { right: 16px; bottom: 14px; }
         .stage-focus { bottom: 14px; left: 16px; max-width: 210px; font-size: 7px; }
+        .stage-product { top: 62px; left: 17px; width: 58%; }
+        .stage-product-title { font-size: 27px; }
+        .stage-product-description { margin-top: 9px; font-size: 9px; }
+        .stage-controls { top: 14px; right: 14px; }
+        .stage-arrow { width: 38px; height: 38px; }
+        .stage-progress { right: 16px; bottom: 36px; left: 16px; }
         .rings-art { top: 12%; right: -12%; width: 97%; }
         .certificate-art {
           top: 15%;
@@ -3218,21 +3325,31 @@
         <div class="symbols-copy">
           <p class="section-kicker">Этап 05 · Интерактивная витрина</p>
           <h2 id="symbols-title">Символы<br />победы</h2>
-          <p class="symbols-description">Прокрутка собирает витрину поэтапно: кольца задают пространство, затем появляются кубок, медаль и грамота.</p>
+          <p class="symbols-description">Четыре символа большого спорта. Прокрутка, стрелки и свайп переводят камеру от одного героя к следующему.</p>
           <ul class="symbols-list" aria-label="Объекты композиции">
+            <li class="is-active">Кольца</li>
             <li>Кубок</li>
             <li>Медаль</li>
             <li>Грамота</li>
-            <li>Кольца</li>
           </ul>
-          <p class="symbols-note">Прокрутите, чтобы собрать сцену</p>
+          <p class="symbols-note">Листайте, чтобы менять символ</p>
         </div>
 
         <div class="award-stage" aria-label="Композиция спортивных наград">
           <canvas class="award-canvas" aria-label="Трёхмерная композиция: кубок, медаль, грамота и олимпийские кольца"></canvas>
           <span class="stage-label">Олимп · коллекция достижений</span>
-          <span class="stage-focus" aria-live="polite">Наведите на объект</span>
+          <span class="stage-product" aria-live="polite">
+            <span class="stage-product-index">Символ 01</span>
+            <strong class="stage-product-title">Олимпийские кольца</strong>
+            <span class="stage-product-description">Единство, движение и характер большого спорта.</span>
+          </span>
+          <span class="stage-focus">Двигайте мышью · листайте</span>
           <span class="stage-axis">01 / 04</span>
+          <span class="stage-progress" aria-hidden="true"></span>
+          <span class="stage-controls">
+            <button class="stage-arrow" type="button" data-symbol-direction="-1" aria-label="Предыдущий символ">←</button>
+            <button class="stage-arrow" type="button" data-symbol-direction="1" aria-label="Следующий символ">→</button>
+          </span>
           <svg class="rings-art" viewBox="0 0 620 290" aria-hidden="true">
             <circle cx="165" cy="110" r="73" fill="none" stroke="#4b8ec7" stroke-width="17" />
             <circle cx="312" cy="110" r="73" fill="none" stroke="#d7bc3c" stroke-width="17" />
@@ -4183,27 +4300,75 @@
           const createRings = () => {
             const rings = new THREE.Group();
             const data = [
-              [-1.7, 0.36, 0x3f88c5],
-              [0, 0.36, 0xd2b63d],
-              [1.7, 0.36, 0x648151],
-              [-0.85, -0.48, 0x24272b],
-              [0.85, -0.48, 0xc73d43]
+              [-1.62, 0.42, 0x2387c9],
+              [0, 0.42, 0x171a1f],
+              [1.62, 0.42, 0xd83b42],
+              [-0.81, -0.48, 0xe4b52f],
+              [0.81, -0.48, 0x4f9352]
             ];
-            data.forEach(([x, y, color]) => {
-              const material = new THREE.MeshStandardMaterial({
-                color,
-                metalness: 0.58,
-                roughness: 0.28,
-                emissive: color,
-                emissiveIntensity: color === 0x24272b ? 0.08 : 0.035
-              });
-              const ring = shadowMesh(new THREE.Mesh(new THREE.TorusGeometry(0.72, 0.115, 20, 72), material));
+            const radius = 0.88;
+            const materials = data.map(([, , color]) => new THREE.MeshStandardMaterial({
+              color,
+              metalness: 0.54,
+              roughness: 0.25,
+              emissive: color,
+              emissiveIntensity: color === 0x171a1f ? 0.075 : 0.025
+            }));
+
+            data.forEach(([x, y], index) => {
+              const ring = shadowMesh(new THREE.Mesh(new THREE.TorusGeometry(radius, 0.12, 24, 96), materials[index]));
               ring.position.set(x, y, 0);
               rings.add(ring);
             });
-            rings.position.set(0.85, 1.78, -2.15);
-            rings.rotation.set(-0.04, -0.12, 0);
-            rings.scale.setScalar(0.86);
+
+            const intersections = (first, second) => {
+              const dx = second[0] - first[0];
+              const dy = second[1] - first[1];
+              const distance = Math.hypot(dx, dy);
+              const midpointX = (first[0] + second[0]) / 2;
+              const midpointY = (first[1] + second[1]) / 2;
+              const height = Math.sqrt(Math.max(0, radius * radius - (distance * distance) / 4));
+              const perpendicularX = -dy / distance;
+              const perpendicularY = dx / distance;
+              return [
+                [midpointX + perpendicularX * height, midpointY + perpendicularY * height],
+                [midpointX - perpendicularX * height, midpointY - perpendicularY * height]
+              ].sort((a, b) => b[1] - a[1]);
+            };
+            const addBridge = (ringIndex, point) => {
+              const [x, y] = data[ringIndex];
+              const angle = Math.atan2(point[1] - y, point[0] - x);
+              const arc = 0.54;
+              const bridge = shadowMesh(new THREE.Mesh(new THREE.TorusGeometry(radius, 0.121, 24, 36, arc), materials[ringIndex]));
+              bridge.position.set(x, y, 0.11);
+              bridge.rotation.z = angle - arc / 2;
+              rings.add(bridge);
+            };
+
+            [
+              [0, 3],
+              [1, 3],
+              [1, 4],
+              [2, 4]
+            ].forEach(([first, second], pairIndex) => {
+              const points = intersections(data[first], data[second]);
+              addBridge(pairIndex % 2 === 0 ? first : second, points[0]);
+              addBridge(pairIndex % 2 === 0 ? second : first, points[1]);
+            });
+
+            const halo = new THREE.Mesh(
+              new THREE.RingGeometry(2.35, 2.39, 96),
+              new THREE.MeshStandardMaterial({
+                color: 0xd7b15a,
+                emissive: 0xd7b15a,
+                emissiveIntensity: 0.3,
+                transparent: true,
+                opacity: 0.07,
+                side: THREE.DoubleSide
+              })
+            );
+            halo.position.z = -0.35;
+            rings.add(halo);
             return rings;
           };
 
@@ -4290,6 +4455,7 @@
           floor.receiveShadow = true;
           scene.add(floor);
 
+          if (false) {
           const symbolsSection = host.closest(".symbols");
           const stageCounter = host.querySelector(".stage-axis");
           const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -4574,6 +4740,250 @@
           render();
           updateScrollProgress();
           host.classList.add("is-three-ready");
+          }
+
+          const symbolsSection = host.closest(".symbols");
+          const stageCounter = host.querySelector(".stage-axis");
+          const stageTitle = host.querySelector(".stage-product-title");
+          const stageDescription = host.querySelector(".stage-product-description");
+          const stageIndex = host.querySelector(".stage-product-index");
+          const stageFocus = host.querySelector(".stage-focus");
+          const symbolLabels = [...symbolsSection.querySelectorAll(".symbols-list li")];
+          const controls = [...host.querySelectorAll("[data-symbol-direction]")];
+          const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+          const mobileMotion = window.matchMedia("(max-width: 760px)");
+          const clamp = (value, minimum = 0, maximum = 1) => Math.min(maximum, Math.max(minimum, value));
+
+          const slides = [
+            {
+              model: ringsModel,
+              title: "Олимпийские кольца",
+              description: "Единство, движение и характер большого спорта.",
+              scale: 1.22,
+              y: -0.05,
+              rotation: new THREE.Euler(-0.025, -0.08, -0.02)
+            },
+            {
+              model: cupModel,
+              title: "Кубок победителя",
+              description: "Не декор, а точка назначения для тех, кто идёт до конца.",
+              scale: 1.08,
+              y: -0.18,
+              rotation: new THREE.Euler(0.02, -0.22, -0.025)
+            },
+            {
+              model: medalModel,
+              title: "Медаль за первое",
+              description: "Результат дисциплины, ежедневной работы и веры в себя.",
+              scale: 1.72,
+              y: -0.08,
+              rotation: new THREE.Euler(-0.08, -0.18, -0.12)
+            },
+            {
+              model: certificateModel,
+              title: "Грамота Олимпа",
+              description: "История достижения, которую хочется сохранить.",
+              scale: 1.48,
+              y: -0.02,
+              rotation: new THREE.Euler(-0.04, -0.28, -0.055)
+            }
+          ];
+
+          slides.forEach((slide) => {
+            slide.model.position.set(0, slide.y, 0);
+            slide.model.rotation.copy(slide.rotation);
+            slide.model.scale.setScalar(slide.scale);
+          });
+
+          let targetSlide = 0;
+          let currentSlide = 0;
+          let displayedSlide = -1;
+          let pointerX = 0;
+          let pointerY = 0;
+          let pointerTargetX = 0;
+          let pointerTargetY = 0;
+          let dragStartX = 0;
+          let dragStartY = 0;
+          let dragging = false;
+          let isVisible = false;
+          let frame = 0;
+          let lastTime = performance.now();
+
+          const updateText = (index) => {
+            if (displayedSlide === index) return;
+            displayedSlide = index;
+            host.classList.add("is-changing");
+            window.setTimeout(() => {
+              const slide = slides[index];
+              stageIndex.textContent = `Символ ${String(index + 1).padStart(2, "0")}`;
+              stageTitle.textContent = slide.title;
+              stageDescription.textContent = slide.description;
+              stageCounter.textContent = `${String(index + 1).padStart(2, "0")} / 04`;
+              host.style.setProperty("--stage-progress", `${((index + 1) / slides.length) * 100}%`);
+              symbolLabels.forEach((label, labelIndex) => label.classList.toggle("is-active", labelIndex === index));
+              host.classList.remove("is-changing");
+            }, reducedMotion.matches ? 0 : 140);
+          };
+
+          const setTarget = (value) => {
+            targetSlide = clamp(value, 0, slides.length - 1);
+            updateText(Math.round(targetSlide));
+            requestFrame();
+          };
+
+          const scrollToSlide = (index) => {
+            const next = (index + slides.length) % slides.length;
+            setTarget(next);
+            if (!mobileMotion.matches && !reducedMotion.matches) {
+              const sectionTop = window.scrollY + symbolsSection.getBoundingClientRect().top;
+              const travel = Math.max(symbolsSection.offsetHeight - window.innerHeight, 1);
+              window.scrollTo({
+                top: sectionTop + travel * (next / (slides.length - 1)),
+                behavior: "smooth"
+              });
+            }
+          };
+
+          const resize = () => {
+            const width = host.clientWidth;
+            const height = host.clientHeight;
+            const aspect = width / height;
+            renderer.setSize(width, height, false);
+            camera.aspect = aspect;
+            camera.position.set(0, aspect < 0.82 ? 0.12 : 0, aspect < 0.82 ? 10.7 : 10.1);
+            composition.scale.setScalar(aspect < 0.82 ? 0.72 : 0.92);
+            composition.position.set(aspect < 0.82 ? 0.12 : 0.65, aspect < 0.82 ? 0.5 : 0.18, 0);
+            camera.lookAt(composition.position.x * 0.12, -0.05, 0);
+            camera.updateProjectionMatrix();
+            requestFrame();
+          };
+
+          const renderScene = (time = performance.now()) => {
+            frame = 0;
+            const deltaTime = Math.min((time - lastTime) / 16.67, 2);
+            lastTime = time;
+            const smoothing = reducedMotion.matches ? 1 : 1 - Math.pow(0.87, deltaTime);
+            currentSlide += (targetSlide - currentSlide) * smoothing;
+            if (Math.abs(targetSlide - currentSlide) < 0.0008) currentSlide = targetSlide;
+            pointerX += (pointerTargetX - pointerX) * 0.07;
+            pointerY += (pointerTargetY - pointerY) * 0.07;
+            const seconds = time * 0.001;
+
+            slides.forEach((slide, index) => {
+              const distance = index - currentSlide;
+              const absoluteDistance = Math.abs(distance);
+              const presence = clamp(1 - absoluteDistance, 0, 1);
+              slide.model.visible = absoluteDistance < 0.985;
+              slide.model.position.set(
+                distance * (mobileMotion.matches ? 7.2 : 8.4),
+                slide.y - absoluteDistance * 0.48 + Math.sin(seconds * 1.3 + index) * 0.075 * presence,
+                -absoluteDistance * 2.9
+              );
+              slide.model.rotation.set(
+                slide.rotation.x + pointerY * 0.055 * presence,
+                slide.rotation.y + distance * 0.72 + pointerX * 0.13 * presence + Math.sin(seconds * 0.55 + index) * 0.045 * presence,
+                slide.rotation.z - distance * 0.14
+              );
+              const scale = slide.scale * THREE.MathUtils.lerp(0.62, 1, presence);
+              slide.model.scale.setScalar(scale);
+            });
+
+            composition.rotation.y = pointerX * 0.035;
+            composition.rotation.x = pointerY * 0.018;
+            camera.position.x = pointerX * 0.16;
+            camera.position.y = (mobileMotion.matches ? 0.12 : 0) + pointerY * 0.08;
+            particles.rotation.z = seconds * 0.012;
+            particles.position.x = pointerX * -0.2;
+            focusLight.intensity = 5 + Math.sin(seconds * 1.8) * 1.2;
+            focusLight.position.set(composition.position.x, 0.5, 4.5);
+            renderer.render(scene, camera);
+
+            const stillMoving = Math.abs(targetSlide - currentSlide) > 0.0008 || Math.abs(pointerTargetX - pointerX) > 0.001 || Math.abs(pointerTargetY - pointerY) > 0.001;
+            if (isVisible && (!reducedMotion.matches || stillMoving)) requestFrame();
+          };
+
+          function requestFrame() {
+            if (!frame) frame = window.requestAnimationFrame(renderScene);
+          }
+
+          const updateFromScroll = () => {
+            if (mobileMotion.matches || reducedMotion.matches) return;
+            const box = symbolsSection.getBoundingClientRect();
+            const travel = Math.max(box.height - window.innerHeight, 1);
+            setTarget(clamp(-box.top / travel) * (slides.length - 1));
+          };
+
+          controls.forEach((button) => {
+            button.addEventListener("click", () => {
+              const direction = Number(button.dataset.symbolDirection);
+              scrollToSlide(Math.round(targetSlide) + direction);
+            });
+          });
+
+          symbolLabels.forEach((label, index) => {
+            label.addEventListener("click", () => scrollToSlide(index));
+            label.tabIndex = 0;
+            label.setAttribute("role", "button");
+            label.addEventListener("keydown", (event) => {
+              if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                scrollToSlide(index);
+              }
+            });
+          });
+
+          host.addEventListener("pointermove", (event) => {
+            const bounds = host.getBoundingClientRect();
+            if (event.pointerType !== "touch") {
+              pointerTargetX = clamp((event.clientX - bounds.left) / bounds.width) * 2 - 1;
+              pointerTargetY = (clamp((event.clientY - bounds.top) / bounds.height) * 2 - 1) * -1;
+              stageFocus.textContent = "Объект реагирует на движение";
+              requestFrame();
+            }
+          }, { passive: true });
+
+          host.addEventListener("pointerleave", () => {
+            pointerTargetX = 0;
+            pointerTargetY = 0;
+            stageFocus.textContent = mobileMotion.matches ? "Свайпните влево или вправо" : "Двигайте мышью · листайте";
+            requestFrame();
+          });
+
+          host.addEventListener("pointerdown", (event) => {
+            if (event.pointerType !== "touch") return;
+            dragStartX = event.clientX;
+            dragStartY = event.clientY;
+            dragging = true;
+          }, { passive: true });
+
+          host.addEventListener("pointerup", (event) => {
+            if (!dragging) return;
+            dragging = false;
+            const distanceX = event.clientX - dragStartX;
+            const distanceY = event.clientY - dragStartY;
+            if (Math.abs(distanceX) > 45 && Math.abs(distanceX) > Math.abs(distanceY)) {
+              scrollToSlide(Math.round(targetSlide) + (distanceX < 0 ? 1 : -1));
+            }
+          }, { passive: true });
+
+          window.addEventListener("scroll", updateFromScroll, { passive: true });
+          new ResizeObserver(resize).observe(host);
+          new IntersectionObserver((entries) => {
+            isVisible = entries[0].isIntersecting;
+            if (isVisible) requestFrame();
+          }, { rootMargin: "120px" }).observe(host);
+          reducedMotion.addEventListener("change", requestFrame);
+          mobileMotion.addEventListener("change", () => {
+            stageFocus.textContent = mobileMotion.matches ? "Свайпните влево или вправо" : "Двигайте мышью · листайте";
+            resize();
+          });
+
+          symbolsSection.classList.toggle("has-scroll-motion", !reducedMotion.matches);
+          host.classList.add("is-three-ready", "is-interactive");
+          stageFocus.textContent = mobileMotion.matches ? "Свайпните влево или вправо" : "Двигайте мышью · листайте";
+          updateText(0);
+          resize();
+          updateFromScroll();
         } catch (error) {
           console.warn("3D-сцена недоступна, используется статичная композиция.", error);
         }
