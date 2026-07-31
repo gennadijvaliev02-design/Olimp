@@ -4339,9 +4339,13 @@
               const [x, y] = data[ringIndex];
               const angle = Math.atan2(point[1] - y, point[0] - x);
               const arc = 0.54;
-              const bridge = shadowMesh(new THREE.Mesh(new THREE.TorusGeometry(radius, 0.121, 24, 36, arc), materials[ringIndex]));
-              bridge.position.set(x, y, 0.11);
+              const bridgeMaterial = materials[ringIndex].clone();
+              bridgeMaterial.depthTest = false;
+              bridgeMaterial.depthWrite = false;
+              const bridge = new THREE.Mesh(new THREE.TorusGeometry(radius, 0.12, 24, 36, arc), bridgeMaterial);
+              bridge.position.set(x, y, 0);
               bridge.rotation.z = angle - arc / 2;
+              bridge.renderOrder = 20;
               rings.add(bridge);
             };
 
@@ -4761,6 +4765,8 @@
               description: "Единство, движение и характер большого спорта.",
               scale: 1.22,
               y: -0.05,
+              mobileY: -0.85,
+              mobileScale: 0.92,
               rotation: new THREE.Euler(-0.025, -0.08, -0.02)
             },
             {
@@ -4769,6 +4775,8 @@
               description: "Не декор, а точка назначения для тех, кто идёт до конца.",
               scale: 1.08,
               y: -0.18,
+              mobileY: -0.55,
+              mobileScale: 0.9,
               rotation: new THREE.Euler(0.02, -0.22, -0.025)
             },
             {
@@ -4777,6 +4785,8 @@
               description: "Результат дисциплины, ежедневной работы и веры в себя.",
               scale: 1.72,
               y: -0.08,
+              mobileY: -1.45,
+              mobileScale: 0.7,
               rotation: new THREE.Euler(-0.08, -0.18, -0.12)
             },
             {
@@ -4785,6 +4795,8 @@
               description: "История достижения, которую хочется сохранить.",
               scale: 1.48,
               y: -0.02,
+              mobileY: -0.7,
+              mobileScale: 0.86,
               rotation: new THREE.Euler(-0.04, -0.28, -0.055)
             }
           ];
@@ -4852,7 +4864,7 @@
             camera.aspect = aspect;
             camera.position.set(0, aspect < 0.82 ? 0.12 : 0, aspect < 0.82 ? 10.7 : 10.1);
             composition.scale.setScalar(aspect < 0.82 ? 0.72 : 0.92);
-            composition.position.set(aspect < 0.82 ? 0.12 : 0.65, aspect < 0.82 ? 0.5 : 0.18, 0);
+            composition.position.set(aspect < 0.82 ? 0.12 : 0.65, aspect < 0.82 ? 0 : 0.18, 0);
             camera.lookAt(composition.position.x * 0.12, -0.05, 0);
             camera.updateProjectionMatrix();
             requestFrame();
@@ -4884,7 +4896,10 @@
                 slide.rotation.y + distance * 0.72 + pointerX * 0.13 * presence + Math.sin(seconds * 0.55 + index) * 0.045 * presence,
                 slide.rotation.z - distance * 0.14
               );
-              const scale = slide.scale * THREE.MathUtils.lerp(0.62, 1, presence);
+              const mobileOffsetY = mobileMotion.matches ? slide.mobileY : 0;
+              slide.model.position.y += mobileOffsetY;
+              const responsiveScale = mobileMotion.matches ? slide.mobileScale : 1;
+              const scale = slide.scale * responsiveScale * THREE.MathUtils.lerp(0.62, 1, presence);
               slide.model.scale.setScalar(scale);
             });
 
