@@ -1,0 +1,4581 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7f3ea" />
+    <meta name="description" content="Демонстрационный сайт спортивного комплекса «Олимп»: направления, лучшие спортсмены, отзывы и онлайн-запись на тренировку." />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="color-scheme" content="light" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Олимп" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:site_name" content="Олимп" />
+    <meta property="og:title" content="Олимп — твой путь к победе" />
+    <meta property="og:description" content="Спортивный комплекс нового поколения. Выбери направление и стань сильнее с каждым днём." />
+    <meta property="og:image" content="og-olimp.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Спортивный комплекс «Олимп» — твой Олимп начинается здесь" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Олимп — твой путь к победе" />
+    <meta name="twitter:description" content="Спортивный комплекс нового поколения. Сильнее с каждым днём." />
+    <meta name="twitter:image" content="og-olimp.jpg" />
+
+    <title>Олимп — спортивный комплекс | Сильнее с каждым днём</title>
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" href="favicon-32.png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" sizes="180x180" />
+    <link rel="manifest" href="site.webmanifest" />
+    <link rel="preload" as="image" href="hero-olimp-concept.webp" type="image/webp" fetchpriority="high" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --navy: #0b1f33;
+        --navy-soft: #22374c;
+        --ivory: #f7f3ea;
+        --red: #d52d35;
+        --red-dark: #ad1f26;
+        --gold: #c99a45;
+      }
+
+      * { box-sizing: border-box; }
+
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 112px;
+        background: var(--ivory);
+      }
+
+      body {
+        margin: 0;
+        min-width: 320px;
+        color: var(--navy);
+        font-family: "Manrope", Arial, sans-serif;
+      }
+
+      .prototype {
+        min-height: 100svh;
+        overflow: hidden;
+        padding-top: 168px;
+        position: relative;
+        isolation: isolate;
+      }
+
+      .hero-image,
+      .hero-wash,
+      .hero-grid {
+        position: absolute;
+        inset: 0;
+      }
+
+      .hero-image {
+        z-index: -3;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 70% center;
+      }
+
+      .hero-wash {
+        z-index: -2;
+        background:
+          linear-gradient(90deg, rgba(247, 243, 234, 0.98) 0%, rgba(247, 243, 234, 0.9) 30%, rgba(247, 243, 234, 0.16) 58%, rgba(247, 243, 234, 0) 75%),
+          linear-gradient(180deg, rgba(247, 243, 234, 0.28), transparent 42%, rgba(11, 31, 51, 0.1));
+      }
+
+      .hero-grid {
+        z-index: -1;
+        opacity: 0.24;
+        background-image: linear-gradient(rgba(11, 31, 51, 0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(11, 31, 51, 0.06) 1px, transparent 1px);
+        background-size: 72px 72px;
+        mask-image: linear-gradient(90deg, black 0 44%, transparent 70%);
+      }
+
+      .site-header {
+        position: fixed;
+        top: 0;
+        left: 50%;
+        z-index: 50;
+        width: min(1440px, calc(100% - 64px));
+        height: 168px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        transform: translateX(-50%);
+        transition:
+          top 220ms ease,
+          width 220ms ease,
+          height 220ms ease,
+          padding 220ms ease,
+          border-color 220ms ease,
+          border-radius 220ms ease,
+          background 220ms ease,
+          box-shadow 220ms ease;
+      }
+
+      .site-header.is-scrolled {
+        top: 10px;
+        width: min(1440px, calc(100% - 32px));
+        height: 86px;
+        padding: 0 20px;
+        border: 1px solid rgba(11, 31, 51, 0.1);
+        border-radius: 18px;
+        background: rgba(247, 243, 234, 0.88);
+        box-shadow: 0 16px 45px rgba(11, 31, 51, 0.12);
+        backdrop-filter: blur(18px);
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+      }
+
+      .brand img {
+        display: block;
+        width: 260px;
+        height: 156px;
+        object-fit: contain;
+        object-position: left center;
+        filter: drop-shadow(0 8px 16px rgba(11, 31, 51, 0.12));
+        transition: width 220ms ease, height 220ms ease;
+      }
+
+      .site-header.is-scrolled .brand img { width: 164px; height: 82px; }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        gap: clamp(18px, 2.5vw, 42px);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .nav a {
+        position: relative;
+        padding: 12px 0;
+        color: var(--navy);
+        text-decoration: none;
+        transition: color 180ms ease;
+      }
+
+      .nav a::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        bottom: 5px;
+        left: 0;
+        height: 2px;
+        background: var(--red);
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 180ms ease;
+      }
+
+      .nav a:hover { color: var(--red); }
+      .nav a:hover::after,
+      .nav a.is-active::after { transform: scaleX(1); transform-origin: left; }
+      .nav a.is-active { color: var(--red); }
+
+      .menu-toggle,
+      .nav-backdrop,
+      .nav-mobile-contact { display: none; }
+
+      .header-action,
+      .hero-button {
+        border: 0;
+        cursor: pointer;
+        font: inherit;
+        font-weight: 800;
+        text-decoration: none;
+      }
+
+      .header-action {
+        padding: 13px 18px;
+        border: 1px solid rgba(11, 31, 51, 0.18);
+        border-radius: 999px;
+        color: var(--navy);
+        background: rgba(247, 243, 234, 0.58);
+      }
+
+      .contact {
+        display: flex;
+        align-items: flex-end;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .contact-details {
+        color: var(--navy-soft);
+        font-size: 10px;
+        font-weight: 700;
+        line-height: 1.45;
+        letter-spacing: 0.03em;
+        text-align: right;
+        transform: translateY(18px);
+      }
+
+      .site-header.is-scrolled .contact-details { display: none; }
+
+      #home,
+      #directions,
+      #athletes,
+      #reviews,
+      #symbols,
+      #contact { scroll-margin-top: 112px; }
+
+      body.booking-open { overflow: hidden; }
+
+      .nav-booking { display: none; }
+
+      .booking-modal {
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        display: grid;
+        padding: 22px;
+        place-items: center;
+        visibility: hidden;
+        opacity: 0;
+        pointer-events: none;
+        transition: visibility 0s linear 260ms, opacity 220ms ease;
+      }
+
+      .booking-modal.is-open {
+        visibility: visible;
+        opacity: 1;
+        pointer-events: auto;
+        transition-delay: 0s;
+      }
+
+      .booking-backdrop {
+        position: absolute;
+        inset: 0;
+        border: 0;
+        background: rgba(1, 9, 17, 0.72);
+        backdrop-filter: blur(9px);
+      }
+
+      .booking-dialog {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        width: min(1040px, 100%);
+        max-height: calc(100dvh - 44px);
+        overflow: hidden;
+        grid-template-columns: minmax(280px, 0.72fr) minmax(480px, 1.28fr);
+        color: var(--navy);
+        background: var(--ivory);
+        box-shadow: 0 40px 110px rgba(0, 0, 0, 0.38);
+        transform: translateY(18px) scale(0.985);
+        transition: transform 280ms cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .booking-modal.is-open .booking-dialog { transform: translateY(0) scale(1); }
+
+      .booking-aside {
+        position: relative;
+        display: flex;
+        min-height: 650px;
+        padding: 46px 40px;
+        overflow: hidden;
+        flex-direction: column;
+        color: white;
+        background:
+          radial-gradient(circle at 80% 12%, rgba(201, 154, 69, 0.23), transparent 30%),
+          radial-gradient(circle at 15% 88%, rgba(213, 45, 53, 0.2), transparent 27%),
+          linear-gradient(145deg, #102942, #071522 75%);
+      }
+
+      .booking-aside::after {
+        content: "ОЛИМП";
+        position: absolute;
+        right: -20px;
+        bottom: 12%;
+        color: rgba(255, 255, 255, 0.035);
+        font-size: 112px;
+        font-weight: 800;
+        letter-spacing: -0.1em;
+        transform: rotate(-90deg) translateX(26%);
+        transform-origin: right bottom;
+        pointer-events: none;
+      }
+
+      .booking-mark {
+        color: #ef5660;
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 0.17em;
+        text-transform: uppercase;
+      }
+
+      .booking-aside h2 {
+        max-width: 320px;
+        margin: 34px 0 22px;
+        font-size: clamp(40px, 4.2vw, 62px);
+        font-weight: 800;
+        letter-spacing: -0.07em;
+        line-height: 0.94;
+        text-transform: uppercase;
+      }
+
+      .booking-aside > p {
+        max-width: 300px;
+        margin: 0;
+        color: rgba(255, 255, 255, 0.58);
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 1.75;
+      }
+
+      .booking-steps {
+        display: grid;
+        margin: auto 0 0;
+        padding: 0;
+        gap: 15px;
+        list-style: none;
+      }
+
+      .booking-steps li {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: rgba(255, 255, 255, 0.66);
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .booking-steps b {
+        display: grid;
+        width: 28px;
+        height: 28px;
+        place-items: center;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        border-radius: 50%;
+        color: var(--gold);
+        font-size: 9px;
+      }
+
+      .booking-content {
+        position: relative;
+        min-height: 650px;
+        overflow-y: auto;
+        padding: 48px clamp(32px, 5vw, 68px) 42px;
+      }
+
+      .booking-close {
+        position: absolute;
+        top: 18px;
+        right: 18px;
+        z-index: 3;
+        display: grid;
+        width: 42px;
+        height: 42px;
+        padding: 0;
+        place-items: center;
+        border: 1px solid rgba(11, 31, 51, 0.13);
+        border-radius: 50%;
+        color: var(--navy);
+        background: transparent;
+        cursor: pointer;
+        font: inherit;
+        font-size: 23px;
+        line-height: 1;
+      }
+
+      .booking-form-head { margin-bottom: 28px; padding-right: 38px; }
+
+      .booking-form-head span {
+        color: var(--red);
+        font-size: 9px;
+        font-weight: 800;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+      }
+
+      .booking-form-head h3 {
+        margin: 8px 0 0;
+        font-size: clamp(29px, 3vw, 40px);
+        font-weight: 800;
+        letter-spacing: -0.055em;
+        line-height: 1;
+      }
+
+      .booking-form {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px 16px;
+      }
+
+      .booking-field {
+        display: flex;
+        min-width: 0;
+        flex-direction: column;
+        gap: 7px;
+      }
+
+      .booking-field.is-wide { grid-column: 1 / -1; }
+
+      .booking-field label,
+      .booking-consent {
+        font-size: 9px;
+        font-weight: 800;
+        letter-spacing: 0.11em;
+        text-transform: uppercase;
+      }
+
+      .booking-field input,
+      .booking-field select {
+        width: 100%;
+        min-height: 52px;
+        padding: 0 15px;
+        border: 1px solid rgba(11, 31, 51, 0.15);
+        border-radius: 0;
+        outline: 0;
+        color: var(--navy);
+        background: rgba(255, 255, 255, 0.52);
+        font: inherit;
+        font-size: 13px;
+        font-weight: 650;
+        transition: border-color 160ms ease, box-shadow 160ms ease, background 160ms ease;
+      }
+
+      .booking-field input:focus,
+      .booking-field select:focus {
+        border-color: var(--gold);
+        background: white;
+        box-shadow: 0 0 0 3px rgba(201, 154, 69, 0.11);
+      }
+
+      .booking-field input[aria-invalid="true"],
+      .booking-field select[aria-invalid="true"] {
+        border-color: var(--red);
+        background: rgba(213, 45, 53, 0.045);
+      }
+
+      .booking-error {
+        min-height: 14px;
+        color: var(--red);
+        font-size: 9px;
+        font-weight: 700;
+        line-height: 1.35;
+      }
+
+      .booking-consent {
+        display: grid;
+        grid-column: 1 / -1;
+        grid-template-columns: 20px 1fr;
+        align-items: start;
+        gap: 10px;
+        color: rgba(11, 31, 51, 0.58);
+        line-height: 1.55;
+        letter-spacing: 0.04em;
+        text-transform: none;
+        cursor: pointer;
+      }
+
+      .booking-consent input {
+        width: 18px;
+        height: 18px;
+        margin: 0;
+        accent-color: var(--red);
+      }
+
+      .booking-consent.is-invalid { color: var(--red); }
+
+      .booking-consent.is-invalid::after {
+        content: "Подтвердите согласие";
+        grid-column: 2;
+        color: var(--red);
+        font-size: 9px;
+        font-weight: 700;
+      }
+
+      .booking-submit {
+        display: inline-flex;
+        min-height: 54px;
+        grid-column: 1 / -1;
+        padding: 0 22px;
+        align-items: center;
+        justify-content: space-between;
+        border: 0;
+        border-radius: 999px;
+        color: white;
+        background: var(--red);
+        box-shadow: 0 14px 30px rgba(213, 45, 53, 0.2);
+        cursor: pointer;
+        font: inherit;
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        transition: background 180ms ease, transform 180ms ease;
+      }
+
+      .booking-submit:hover { background: var(--red-dark); transform: translateY(-2px); }
+      .booking-submit span { font-size: 19px; }
+
+      .booking-privacy {
+        grid-column: 1 / -1;
+        margin: -5px 0 0;
+        color: rgba(11, 31, 51, 0.36);
+        font-size: 8px;
+        font-weight: 700;
+        line-height: 1.5;
+        text-align: center;
+      }
+
+      .booking-success[hidden],
+      .booking-form-view[hidden] { display: none; }
+
+      .booking-success {
+        display: flex;
+        min-height: 540px;
+        align-items: flex-start;
+        justify-content: center;
+        flex-direction: column;
+      }
+
+      .booking-success-icon {
+        display: grid;
+        width: 72px;
+        height: 72px;
+        margin-bottom: 30px;
+        place-items: center;
+        border-radius: 50%;
+        color: white;
+        background: var(--red);
+        box-shadow: 0 16px 35px rgba(213, 45, 53, 0.22);
+        font-size: 28px;
+      }
+
+      .booking-success .booking-mark { color: var(--red); }
+
+      .booking-success h3 {
+        max-width: 470px;
+        margin: 12px 0 18px;
+        font-size: clamp(36px, 4.2vw, 58px);
+        font-weight: 800;
+        letter-spacing: -0.07em;
+        line-height: 0.94;
+        text-transform: uppercase;
+      }
+
+      .booking-success > p {
+        max-width: 430px;
+        margin: 0;
+        color: var(--navy-soft);
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 1.65;
+      }
+
+      .booking-summary {
+        width: 100%;
+        margin: 28px 0;
+        padding: 18px 0;
+        border-top: 1px solid rgba(11, 31, 51, 0.1);
+        border-bottom: 1px solid rgba(11, 31, 51, 0.1);
+        color: var(--navy);
+        font-size: 12px;
+        font-weight: 800;
+        line-height: 1.7;
+      }
+
+      .booking-done {
+        min-width: 180px;
+        min-height: 50px;
+        border: 1px solid rgba(11, 31, 51, 0.16);
+        border-radius: 999px;
+        color: var(--navy);
+        background: transparent;
+        cursor: pointer;
+        font: inherit;
+        font-size: 11px;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      .hero {
+        width: min(1440px, calc(100% - 64px));
+        min-height: calc(100svh - 168px);
+        margin: 0 auto;
+        padding: clamp(54px, 9vh, 110px) 0 62px;
+        display: flex;
+        align-items: center;
+      }
+
+      .hero-copy { width: min(585px, 48vw); }
+
+      .eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 0 0 22px;
+        color: var(--red);
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.17em;
+        text-transform: uppercase;
+      }
+
+      .eyebrow::before {
+        content: "";
+        width: 38px;
+        height: 2px;
+        background: var(--gold);
+      }
+
+      h1 {
+        max-width: 620px;
+        margin: 0;
+        color: var(--navy);
+        font-size: clamp(44px, 6vw, 92px);
+        font-weight: 800;
+        letter-spacing: -0.07em;
+        line-height: 0.94;
+        text-transform: uppercase;
+      }
+
+      h1 em { color: var(--red); font-style: normal; }
+
+      .hero-description {
+        max-width: 420px;
+        margin: 30px 0 36px;
+        color: var(--navy-soft);
+        font-size: clamp(15px, 1.25vw, 18px);
+        font-weight: 500;
+        line-height: 1.6;
+      }
+
+      .hero-actions { display: flex; align-items: center; gap: 22px; }
+
+      .hero-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 14px;
+        padding: 18px 24px;
+        border-radius: 999px;
+        color: white;
+        background: var(--red);
+        box-shadow: 0 14px 30px rgba(213, 45, 53, 0.24);
+        transition: transform 180ms ease, background 180ms ease;
+      }
+
+      .hero-button:hover { background: var(--red-dark); transform: translateY(-2px); }
+      .hero-button span { font-size: 19px; line-height: 1; }
+
+      .hero-note {
+        color: var(--navy);
+        font-size: 18px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+      }
+
+      .directions {
+        position: relative;
+        overflow: hidden;
+        padding: clamp(82px, 10vw, 144px) 0 clamp(92px, 11vw, 156px);
+        background:
+          radial-gradient(circle at 12% 10%, rgba(201, 154, 69, 0.13), transparent 27%),
+          linear-gradient(180deg, #f7f3ea 0%, #eee8dc 100%);
+      }
+
+      .directions::before {
+        content: "ОЛИМП";
+        position: absolute;
+        top: 40px;
+        right: -24px;
+        color: rgba(11, 31, 51, 0.035);
+        font-size: clamp(110px, 20vw, 310px);
+        font-weight: 800;
+        letter-spacing: -0.08em;
+        line-height: 1;
+        pointer-events: none;
+      }
+
+      .directions-head,
+      .carousel-shell {
+        width: min(1440px, calc(100% - 64px));
+        margin-inline: auto;
+      }
+
+      .directions-head {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 32px;
+        margin-bottom: 42px;
+      }
+
+      .section-kicker {
+        margin: 0 0 15px;
+        color: var(--red);
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .directions h2 {
+        max-width: 760px;
+        margin: 0;
+        color: var(--navy);
+        font-size: clamp(38px, 5vw, 72px);
+        font-weight: 800;
+        letter-spacing: -0.06em;
+        line-height: 0.98;
+        text-transform: uppercase;
+      }
+
+      .carousel-controls {
+        display: flex;
+        gap: 10px;
+        padding-bottom: 5px;
+      }
+
+      .carousel-arrow {
+        width: 52px;
+        height: 52px;
+        border: 1px solid rgba(11, 31, 51, 0.16);
+        border-radius: 50%;
+        color: var(--navy);
+        background: rgba(255, 255, 255, 0.48);
+        cursor: pointer;
+        font: 700 22px/1 "Manrope", sans-serif;
+        transition: color 180ms ease, background 180ms ease, transform 180ms ease;
+      }
+
+      .carousel-arrow:hover {
+        color: white;
+        background: var(--red);
+        transform: scale(1.06);
+      }
+
+      .carousel-shell { position: relative; }
+
+      .directions-track {
+        display: flex;
+        gap: 18px;
+        overflow-x: auto;
+        padding: 18px 4px 30px;
+        scroll-behavior: smooth;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        overscroll-behavior-inline: contain;
+      }
+
+      .directions-track::-webkit-scrollbar { display: none; }
+
+      .sport-card {
+        --accent: var(--red);
+        position: relative;
+        flex: 0 0 clamp(244px, 19vw, 286px);
+        min-height: 570px;
+        overflow: hidden;
+        border: 1px solid rgba(11, 31, 51, 0.1);
+        border-radius: 3px;
+        background: rgba(255, 255, 255, 0.78);
+        box-shadow: 0 20px 48px rgba(11, 31, 51, 0.09);
+        scroll-snap-align: start;
+        animation: cardFloat 5.5s ease-in-out infinite;
+        transition: box-shadow 300ms ease, transform 300ms cubic-bezier(.2,.8,.2,1);
+      }
+
+      .sport-card:nth-child(2n) { animation-delay: -1.5s; }
+      .sport-card:nth-child(3n) { animation-delay: -3s; }
+
+      .sport-card:hover {
+        z-index: 2;
+        box-shadow: 0 30px 70px rgba(11, 31, 51, 0.17);
+        transform: translateY(-12px);
+        animation-play-state: paused;
+      }
+
+      .card-media {
+        position: relative;
+        height: 350px;
+        overflow: hidden;
+        background: #c9c4bb;
+      }
+
+      .card-media::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, transparent 52%, rgba(11, 31, 51, 0.7));
+      }
+
+      .card-media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: var(--position, center);
+        filter: saturate(0.88) contrast(1.04);
+        transition: transform 800ms cubic-bezier(.2,.8,.2,1), filter 500ms ease;
+      }
+
+      .sport-card:hover .card-media img {
+        filter: saturate(1) contrast(1.05);
+        transform: scale(1.055);
+      }
+
+      .card-number {
+        position: absolute;
+        top: 18px;
+        left: 18px;
+        z-index: 1;
+        color: white;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.15em;
+      }
+
+      .card-role {
+        position: absolute;
+        right: 18px;
+        bottom: 17px;
+        left: 18px;
+        z-index: 1;
+        color: white;
+        font-size: 9px;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .card-body {
+        display: flex;
+        min-height: 220px;
+        padding: 23px 22px 21px;
+        flex-direction: column;
+        border-top: 4px solid var(--accent);
+      }
+
+      .card-body h3 {
+        min-height: 58px;
+        margin: 0 0 17px;
+        color: var(--navy);
+        font-size: 23px;
+        font-weight: 800;
+        letter-spacing: -0.045em;
+        line-height: 1.08;
+        text-transform: uppercase;
+      }
+
+      .card-meta {
+        display: grid;
+        gap: 9px;
+        margin: 0;
+        color: var(--navy-soft);
+        font-size: 11px;
+        font-weight: 600;
+      }
+
+      .card-meta div {
+        display: grid;
+        grid-template-columns: 52px 1fr;
+        gap: 7px;
+      }
+
+      .card-meta dt {
+        color: rgba(11, 31, 51, 0.48);
+        font-size: 9px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .card-meta dd { margin: 0; }
+
+      .card-link {
+        display: flex;
+        width: 100%;
+        min-height: 44px;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: auto;
+        padding: 18px 0 0;
+        border: 0;
+        color: var(--red);
+        background: transparent;
+        cursor: pointer;
+        font-family: inherit;
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 0.09em;
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+
+      .card-link span {
+        font-size: 19px;
+        transition: transform 180ms ease;
+      }
+
+      .card-link:hover span { transform: translate(3px, -3px); }
+
+      .carousel-status {
+        margin: 4px 0 0;
+        color: rgba(11, 31, 51, 0.52);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      @keyframes cardFloat {
+        0%, 100% { translate: 0 0; }
+        50% { translate: 0 -6px; }
+      }
+
+      .athletes {
+        position: relative;
+        overflow: hidden;
+        padding: clamp(86px, 9vw, 138px) 0 clamp(90px, 10vw, 150px);
+        color: white;
+        background:
+          radial-gradient(circle at 82% 34%, rgba(213, 45, 53, 0.18), transparent 28%),
+          radial-gradient(circle at 12% 80%, rgba(201, 154, 69, 0.12), transparent 25%),
+          #071522;
+      }
+
+      .athletes::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        opacity: 0.16;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+        background-size: 88px 88px;
+        mask-image: linear-gradient(180deg, black, transparent 88%);
+        pointer-events: none;
+      }
+
+      .athletes-head,
+      .athlete-stage {
+        width: min(1440px, calc(100% - 64px));
+        margin-inline: auto;
+      }
+
+      .athletes-head {
+        position: relative;
+        z-index: 3;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 32px;
+        margin-bottom: 40px;
+      }
+
+      .athletes .section-kicker { color: #ef5660; }
+
+      .athletes h2 {
+        max-width: 850px;
+        margin: 0;
+        color: white;
+        font-size: clamp(42px, 5.7vw, 82px);
+        font-weight: 800;
+        letter-spacing: -0.065em;
+        line-height: 0.95;
+        text-transform: uppercase;
+      }
+
+      .athletes-lead {
+        max-width: 320px;
+        margin: 0 0 5px;
+        color: rgba(255, 255, 255, 0.58);
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 1.7;
+      }
+
+      .athlete-stage {
+        position: relative;
+        z-index: 2;
+      }
+
+      .athlete-slides {
+        position: relative;
+        min-height: clamp(580px, 47vw, 680px);
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.11);
+        background: #091827;
+        box-shadow: 0 34px 90px rgba(0, 0, 0, 0.3);
+      }
+
+      .athlete-slide {
+        --glow: rgba(213, 45, 53, 0.25);
+        position: absolute;
+        inset: 0;
+        display: grid;
+        grid-template-columns: minmax(330px, 44%) 1fr;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 520ms ease;
+      }
+
+      .athlete-slide.is-active {
+        z-index: 2;
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .athlete-slide::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        background:
+          linear-gradient(90deg, #091827 0%, rgba(9, 24, 39, 0.98) 32%, rgba(9, 24, 39, 0.4) 62%, rgba(9, 24, 39, 0.08) 100%),
+          linear-gradient(0deg, rgba(9, 24, 39, 0.82), transparent 42%);
+        pointer-events: none;
+      }
+
+      .athlete-slide::after {
+        content: "";
+        position: absolute;
+        top: 9%;
+        right: 8%;
+        width: 42%;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background: var(--glow);
+        filter: blur(70px);
+        opacity: 0.7;
+        pointer-events: none;
+      }
+
+      .athlete-ghost {
+        position: absolute;
+        top: 3%;
+        left: 3%;
+        z-index: 0;
+        max-width: 94%;
+        overflow: hidden;
+        color: rgba(255, 255, 255, 0.035);
+        font-size: clamp(94px, 14vw, 218px);
+        font-weight: 800;
+        letter-spacing: -0.09em;
+        line-height: 0.85;
+        text-transform: uppercase;
+        white-space: nowrap;
+        transform: translateX(-3%);
+        transition: transform 950ms cubic-bezier(.16,.8,.2,1);
+      }
+
+      .athlete-slide.is-active .athlete-ghost { transform: translateX(0); }
+
+      .athlete-photo {
+        position: absolute;
+        inset: 0 0 0 34%;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        overflow: hidden;
+      }
+
+      .athlete-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: var(--athlete-position, center bottom);
+        filter: saturate(0.88) contrast(1.06);
+        opacity: 0;
+        transform: scale(1.04) translateX(28px);
+        transition: opacity 500ms ease 80ms, transform 900ms cubic-bezier(.16,.8,.2,1);
+      }
+
+      .athlete-slide.is-active .athlete-photo img {
+        opacity: 1;
+        transform: scale(1) translateX(0);
+      }
+
+      .athlete-copy {
+        position: relative;
+        z-index: 3;
+        display: flex;
+        max-width: 560px;
+        padding: clamp(48px, 6vw, 88px) clamp(28px, 4.2vw, 64px);
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .athlete-index {
+        margin-bottom: 22px;
+        color: #ef5660;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .athlete-copy h3 {
+        margin: 0;
+        color: white;
+        font-size: clamp(48px, 5.5vw, 82px);
+        font-weight: 800;
+        letter-spacing: -0.07em;
+        line-height: 0.9;
+        text-transform: uppercase;
+      }
+
+      .athlete-sport {
+        margin: 24px 0 9px;
+        color: var(--gold);
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .athlete-achievement {
+        max-width: 380px;
+        margin: 0;
+        color: white;
+        font-size: clamp(22px, 2.1vw, 31px);
+        font-weight: 700;
+        letter-spacing: -0.035em;
+        line-height: 1.16;
+      }
+
+      .athlete-motto {
+        max-width: 360px;
+        margin: 28px 0 0;
+        padding-left: 18px;
+        border-left: 2px solid var(--red);
+        color: rgba(255, 255, 255, 0.58);
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 1.65;
+      }
+
+      .athlete-nav {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        border-right: 1px solid rgba(255, 255, 255, 0.11);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.11);
+        border-left: 1px solid rgba(255, 255, 255, 0.11);
+        background: rgba(255, 255, 255, 0.025);
+      }
+
+      .athlete-tab {
+        position: relative;
+        min-width: 0;
+        padding: 21px 18px;
+        overflow: hidden;
+        border: 0;
+        border-right: 1px solid rgba(255, 255, 255, 0.1);
+        color: rgba(255, 255, 255, 0.42);
+        background: transparent;
+        cursor: pointer;
+        font: inherit;
+        text-align: left;
+        transition: color 200ms ease, background 200ms ease;
+      }
+
+      .athlete-tab:last-child { border-right: 0; }
+
+      .athlete-tab::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 100%;
+        left: 0;
+        height: 3px;
+        background: var(--red);
+        transition: right 350ms ease;
+      }
+
+      .athlete-tab:hover,
+      .athlete-tab.is-active {
+        color: white;
+        background: rgba(255, 255, 255, 0.045);
+      }
+
+      .athlete-tab.is-active::before { right: 0; }
+
+      .athlete-tab small {
+        display: block;
+        margin-bottom: 7px;
+        color: #ef5660;
+        font-size: 9px;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+      }
+
+      .athlete-tab strong {
+        display: block;
+        overflow: hidden;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.07em;
+        text-overflow: ellipsis;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+
+      .athlete-mobile-status { display: none; }
+
+      .reviews {
+        position: relative;
+        overflow: hidden;
+        padding: clamp(88px, 10vw, 148px) 0;
+        background:
+          radial-gradient(circle at 88% 12%, rgba(201, 154, 69, 0.16), transparent 26%),
+          linear-gradient(180deg, #f7f3ea, #eee8dc);
+      }
+
+      .reviews::before {
+        content: "ГОЛОСА";
+        position: absolute;
+        top: 3%;
+        right: -1%;
+        color: rgba(11, 31, 51, 0.035);
+        font-size: clamp(120px, 19vw, 290px);
+        font-weight: 800;
+        letter-spacing: -0.09em;
+        line-height: 0.86;
+        pointer-events: none;
+      }
+
+      .reviews-head,
+      .reviews-shell {
+        position: relative;
+        z-index: 1;
+        width: min(1440px, calc(100% - 64px));
+        margin-inline: auto;
+      }
+
+      .reviews-head {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(260px, 0.34fr);
+        margin-bottom: 46px;
+        align-items: end;
+        gap: 54px;
+      }
+
+      .reviews h2 {
+        max-width: 900px;
+        margin: 0;
+        color: var(--navy);
+        font-size: clamp(44px, 5.8vw, 84px);
+        font-weight: 800;
+        letter-spacing: -0.07em;
+        line-height: 0.93;
+        text-transform: uppercase;
+      }
+
+      .reviews-summary {
+        margin: 0 0 6px;
+        padding-left: 20px;
+        border-left: 2px solid var(--red);
+        color: var(--navy-soft);
+      }
+
+      .reviews-summary strong {
+        display: block;
+        margin-bottom: 7px;
+        color: var(--navy);
+        font-size: 31px;
+        font-weight: 800;
+        letter-spacing: -0.05em;
+      }
+
+      .reviews-summary span {
+        font-size: 11px;
+        font-weight: 700;
+        line-height: 1.6;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .reviews-track {
+        display: flex;
+        gap: 20px;
+        overflow-x: auto;
+        padding: 3px 2px 24px;
+        scroll-behavior: smooth;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        touch-action: pan-x pan-y;
+      }
+
+      .reviews-track::-webkit-scrollbar { display: none; }
+
+      .review-card {
+        position: relative;
+        display: flex;
+        min-height: 420px;
+        flex: 0 0 calc((100% - 40px) / 3);
+        padding: clamp(27px, 3vw, 42px);
+        overflow: hidden;
+        flex-direction: column;
+        border: 1px solid rgba(11, 31, 51, 0.11);
+        color: var(--navy);
+        background: rgba(255, 255, 255, 0.62);
+        box-shadow: 0 24px 55px rgba(11, 31, 51, 0.08);
+        scroll-snap-align: start;
+        transition: border-color 220ms ease, transform 220ms ease, box-shadow 220ms ease;
+      }
+
+      .review-card::after {
+        content: "";
+        position: absolute;
+        right: -65px;
+        bottom: -80px;
+        width: 180px;
+        height: 180px;
+        border: 28px solid rgba(201, 154, 69, 0.08);
+        border-radius: 50%;
+      }
+
+      .review-card:hover,
+      .review-card.is-current {
+        border-color: rgba(213, 45, 53, 0.3);
+        box-shadow: 0 28px 70px rgba(11, 31, 51, 0.12);
+        transform: translateY(-3px);
+      }
+
+      .review-card:nth-child(3n + 2) {
+        color: white;
+        border-color: rgba(255, 255, 255, 0.08);
+        background:
+          radial-gradient(circle at 84% 12%, rgba(201, 154, 69, 0.2), transparent 30%),
+          linear-gradient(145deg, #102942, #071522);
+      }
+
+      .review-card:nth-child(3n + 2):hover,
+      .review-card:nth-child(3n + 2).is-current { border-color: rgba(239, 86, 96, 0.58); }
+
+      .review-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
+
+      .review-quote {
+        color: var(--red);
+        font-family: Georgia, serif;
+        font-size: 70px;
+        line-height: 0.55;
+      }
+
+      .review-score {
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 0.11em;
+        text-transform: uppercase;
+      }
+
+      .review-score b { color: var(--gold); font-size: 17px; }
+
+      .review-text {
+        position: relative;
+        z-index: 1;
+        margin: 48px 0 34px;
+        font-size: clamp(18px, 1.5vw, 23px);
+        font-weight: 650;
+        letter-spacing: -0.035em;
+        line-height: 1.43;
+      }
+
+      .review-person {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        margin-top: auto;
+        align-items: center;
+        gap: 13px;
+      }
+
+      .review-avatar {
+        display: grid;
+        width: 48px;
+        height: 48px;
+        flex: 0 0 48px;
+        place-items: center;
+        border-radius: 50%;
+        color: white;
+        background: var(--red);
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.05em;
+      }
+
+      .review-person strong {
+        display: block;
+        margin-bottom: 4px;
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .review-person small {
+        display: block;
+        color: rgba(11, 31, 51, 0.52);
+        font-size: 10px;
+        font-weight: 700;
+      }
+
+      .review-card:nth-child(3n + 2) .review-person small { color: rgba(255, 255, 255, 0.5); }
+
+      .reviews-footer {
+        display: flex;
+        min-height: 48px;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+      }
+
+      .reviews-progress {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .reviews-count {
+        min-width: 54px;
+        color: var(--navy);
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+      }
+
+      .reviews-dots { display: flex; gap: 6px; }
+
+      .reviews-dot {
+        width: 18px;
+        height: 3px;
+        border: 0;
+        padding: 0;
+        background: rgba(11, 31, 51, 0.17);
+        cursor: pointer;
+        transition: width 180ms ease, background 180ms ease;
+      }
+
+      .reviews-dot.is-active { width: 38px; background: var(--red); }
+
+      .reviews-controls { display: flex; gap: 8px; }
+
+      .reviews-arrow {
+        display: grid;
+        width: 48px;
+        height: 48px;
+        padding: 0;
+        place-items: center;
+        border: 1px solid rgba(11, 31, 51, 0.15);
+        border-radius: 50%;
+        color: var(--navy);
+        background: rgba(255, 255, 255, 0.36);
+        cursor: pointer;
+        font: inherit;
+        font-size: 18px;
+        transition: color 180ms ease, border-color 180ms ease, background 180ms ease;
+      }
+
+      .reviews-arrow:hover {
+        border-color: var(--red);
+        color: white;
+        background: var(--red);
+      }
+
+      .reviews-demo {
+        color: rgba(11, 31, 51, 0.4);
+        font-size: 9px;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .symbols {
+        position: relative;
+        overflow: hidden;
+        padding: clamp(88px, 11vw, 160px) 0;
+        color: white;
+        background:
+          radial-gradient(circle at 72% 46%, rgba(201, 154, 69, 0.2), transparent 25%),
+          radial-gradient(circle at 86% 79%, rgba(213, 45, 53, 0.19), transparent 22%),
+          linear-gradient(128deg, #0d2238, #071522 70%);
+      }
+
+      .symbols.has-scroll-motion {
+        overflow: clip;
+        min-height: 170svh;
+        padding: 0;
+      }
+
+      .symbols.has-scroll-motion .symbols-inner {
+        position: sticky;
+        top: 0;
+        min-height: 100svh;
+      }
+
+      .symbols::before {
+        content: "ПОБЕДА";
+        position: absolute;
+        top: 9%;
+        left: -1.7%;
+        color: rgba(255, 255, 255, 0.035);
+        font-size: clamp(120px, 19vw, 300px);
+        font-weight: 800;
+        letter-spacing: -0.1em;
+        line-height: 0.8;
+        white-space: nowrap;
+        pointer-events: none;
+      }
+
+      .symbols-inner {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: minmax(280px, 0.7fr) minmax(460px, 1.3fr);
+        width: min(1440px, calc(100% - 64px));
+        min-height: 680px;
+        margin-inline: auto;
+        align-items: center;
+        gap: clamp(34px, 7vw, 116px);
+      }
+
+      .symbols-copy { max-width: 480px; }
+      .symbols .section-kicker { color: #ef5660; }
+
+      .symbols h2 {
+        margin: 0;
+        color: white;
+        font-size: clamp(48px, 5.8vw, 86px);
+        font-weight: 800;
+        letter-spacing: -0.07em;
+        line-height: 0.92;
+        text-transform: uppercase;
+      }
+
+      .symbols-description {
+        max-width: 410px;
+        margin: 28px 0 32px;
+        color: rgba(255, 255, 255, 0.64);
+        font-size: 15px;
+        font-weight: 500;
+        line-height: 1.7;
+      }
+
+      .symbols-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 9px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .symbols-list li {
+        padding: 9px 12px;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        color: rgba(255, 255, 255, 0.68);
+        font-size: 9px;
+        font-weight: 800;
+        letter-spacing: 0.11em;
+        text-transform: uppercase;
+        transition: border-color 180ms ease, color 180ms ease, background 180ms ease, transform 180ms ease;
+      }
+
+      .symbols-list li.is-active {
+        border-color: rgba(239, 86, 96, 0.72);
+        color: white;
+        background: rgba(213, 45, 53, 0.13);
+        transform: translateY(-2px);
+      }
+
+      .symbols-note {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 35px 0 0;
+        color: rgba(255, 255, 255, 0.42);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .symbols-note::before {
+        content: "";
+        width: 30px;
+        height: 1px;
+        background: var(--red);
+      }
+
+      .award-stage {
+        position: relative;
+        min-height: 630px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background:
+          linear-gradient(140deg, rgba(255, 255, 255, 0.05), transparent 38%),
+          rgba(1, 9, 17, 0.32);
+        box-shadow: inset 0 0 90px rgba(0, 0, 0, 0.35), 0 30px 70px rgba(0, 0, 0, 0.22);
+        isolation: isolate;
+      }
+
+      .award-canvas {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        display: block;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+      }
+
+      .award-stage.is-three-ready .award-canvas { opacity: 1; }
+      .award-stage.is-interactive .award-canvas { cursor: grab; }
+      .award-stage.is-object-hovered .award-canvas { cursor: pointer; }
+
+      .award-stage.is-three-ready .rings-art,
+      .award-stage.is-three-ready .certificate-art,
+      .award-stage.is-three-ready .medal-art,
+      .award-stage.is-three-ready .trophy-art,
+      .award-stage.is-three-ready .stage-floor {
+        visibility: hidden;
+        opacity: 0;
+      }
+
+      .award-stage::before,
+      .award-stage::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(34px);
+        pointer-events: none;
+      }
+
+      .award-stage::before {
+        top: 17%;
+        left: 18%;
+        width: 280px;
+        height: 280px;
+        background: rgba(201, 154, 69, 0.24);
+      }
+
+      .award-stage::after {
+        right: 3%;
+        bottom: -8%;
+        width: 240px;
+        height: 240px;
+        background: rgba(213, 45, 53, 0.18);
+      }
+
+      .stage-label {
+        position: absolute;
+        top: 22px;
+        left: 24px;
+        z-index: 5;
+        color: rgba(255, 255, 255, 0.43);
+        font-size: 9px;
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .stage-axis {
+        position: absolute;
+        right: 25px;
+        bottom: 22px;
+        z-index: 5;
+        color: rgba(255, 255, 255, 0.35);
+        font-size: 9px;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+      }
+
+      .stage-focus {
+        position: absolute;
+        bottom: 22px;
+        left: 24px;
+        z-index: 5;
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        color: rgba(255, 255, 255, 0.4);
+        font-size: 8px;
+        font-weight: 800;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+        pointer-events: none;
+        transition: color 180ms ease;
+      }
+
+      .stage-focus::before {
+        content: "";
+        width: 18px;
+        height: 1px;
+        background: var(--red);
+      }
+
+      .award-stage.is-object-hovered .stage-focus { color: rgba(255, 255, 255, 0.88); }
+
+      .rings-art {
+        position: absolute;
+        top: 12%;
+        right: 5%;
+        z-index: 0;
+        width: min(71%, 520px);
+        opacity: 0.52;
+        filter: drop-shadow(0 8px 17px rgba(0, 0, 0, 0.3));
+      }
+
+      .certificate-art {
+        position: absolute;
+        top: 17%;
+        right: 8%;
+        z-index: 1;
+        display: flex;
+        width: 196px;
+        height: 260px;
+        padding: 18px;
+        flex-direction: column;
+        border: 1px solid rgba(201, 154, 69, 0.9);
+        color: #102238;
+        background: linear-gradient(135deg, #fffdf8, #eae1cc);
+        box-shadow: -16px 26px 38px rgba(0, 0, 0, 0.28);
+        transform: perspective(1000px) rotateY(-20deg) rotateZ(8deg);
+      }
+
+      .certificate-art::before {
+        content: "";
+        position: absolute;
+        inset: 7px;
+        border: 1px solid rgba(201, 154, 69, 0.55);
+        pointer-events: none;
+      }
+
+      .certificate-kicker {
+        position: relative;
+        margin: 12px 0 0;
+        color: #a87b33;
+        font-size: 7px;
+        font-weight: 800;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+      }
+
+      .certificate-art strong {
+        position: relative;
+        max-width: 116px;
+        margin-top: 14px;
+        font-size: 22px;
+        font-weight: 800;
+        letter-spacing: -0.07em;
+        line-height: 0.9;
+        text-transform: uppercase;
+      }
+
+      .certificate-line {
+        position: relative;
+        width: 100%;
+        height: 1px;
+        margin-top: auto;
+        background: rgba(16, 34, 56, 0.24);
+      }
+
+      .certificate-line + .certificate-line { margin-top: 8px; width: 72%; }
+
+      .certificate-seal {
+        position: absolute;
+        right: 18px;
+        bottom: 19px;
+        width: 36px;
+        height: 36px;
+        border: 2px solid #b38135;
+        border-radius: 50%;
+      }
+
+      .medal-art {
+        position: absolute;
+        right: 27%;
+        bottom: 11%;
+        z-index: 3;
+        width: 145px;
+        height: 145px;
+        border: 11px solid #d8b05e;
+        border-radius: 50%;
+        background:
+          radial-gradient(circle at 32% 25%, rgba(255, 255, 255, 0.76), transparent 12%),
+          radial-gradient(circle at 67% 73%, #8c5d17, transparent 48%),
+          linear-gradient(135deg, #f6dd91, #b67b22 62%, #e7c367);
+        box-shadow: inset 8px 8px 16px rgba(255, 255, 255, 0.35), inset -10px -10px 20px rgba(78, 45, 5, 0.35), 0 24px 28px rgba(0, 0, 0, 0.34);
+        transform: perspective(700px) rotateY(-20deg) rotateZ(-10deg);
+      }
+
+      .medal-art::before {
+        content: "1";
+        position: absolute;
+        inset: 16px;
+        display: grid;
+        place-items: center;
+        border: 2px solid rgba(106, 69, 12, 0.55);
+        border-radius: 50%;
+        color: rgba(117, 75, 14, 0.8);
+        font-size: 51px;
+        font-weight: 800;
+        line-height: 1;
+      }
+
+      .medal-ribbon {
+        position: absolute;
+        top: -69px;
+        left: 47px;
+        width: 46px;
+        height: 78px;
+        background: linear-gradient(90deg, #ba232e, #ea5360 48%, #951923);
+        clip-path: polygon(0 0, 100% 0, 78% 100%, 21% 100%);
+        filter: drop-shadow(6px 5px 4px rgba(0, 0, 0, 0.25));
+      }
+
+      .trophy-art {
+        position: absolute;
+        bottom: 5%;
+        left: 14%;
+        z-index: 4;
+        width: min(49%, 300px);
+        filter: drop-shadow(14px 28px 23px rgba(0, 0, 0, 0.48));
+        transform: perspective(1000px) rotateY(-14deg) rotateZ(-3deg);
+      }
+
+      .trophy-art svg { display: block; width: 100%; height: auto; }
+
+      .stage-floor {
+        position: absolute;
+        right: 5%;
+        bottom: 2%;
+        left: 8%;
+        z-index: 0;
+        height: 18%;
+        border-radius: 50%;
+        background: radial-gradient(ellipse, rgba(0, 0, 0, 0.52), transparent 68%);
+        filter: blur(7px);
+      }
+
+      .contact-section {
+        position: relative;
+        overflow: hidden;
+        padding: clamp(92px, 10vw, 150px) 0;
+        background:
+          radial-gradient(circle at 13% 17%, rgba(201, 154, 69, 0.14), transparent 25%),
+          linear-gradient(180deg, #f7f3ea, #eee8dc);
+      }
+
+      .contact-section::before {
+        content: "ПРИХОДИ";
+        position: absolute;
+        right: -2%;
+        bottom: -2%;
+        color: rgba(11, 31, 51, 0.035);
+        font-size: clamp(110px, 18vw, 280px);
+        font-weight: 800;
+        letter-spacing: -0.09em;
+        line-height: 0.8;
+        pointer-events: none;
+      }
+
+      .contact-inner {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        width: min(1440px, calc(100% - 64px));
+        margin-inline: auto;
+        grid-template-columns: minmax(330px, 0.82fr) minmax(500px, 1.18fr);
+        align-items: stretch;
+        gap: clamp(42px, 7vw, 110px);
+      }
+
+      .contact-copy { padding: 20px 0; }
+
+      .contact-section h2 {
+        max-width: 660px;
+        margin: 0;
+        color: var(--navy);
+        font-size: clamp(48px, 6vw, 88px);
+        font-weight: 800;
+        letter-spacing: -0.075em;
+        line-height: 0.91;
+        text-transform: uppercase;
+      }
+
+      .contact-lead {
+        max-width: 470px;
+        margin: 28px 0 38px;
+        color: var(--navy-soft);
+        font-size: 15px;
+        font-weight: 550;
+        line-height: 1.72;
+      }
+
+      .contact-list {
+        margin: 0;
+        border-top: 1px solid rgba(11, 31, 51, 0.13);
+      }
+
+      .contact-row {
+        display: grid;
+        padding: 19px 0;
+        grid-template-columns: 105px 1fr;
+        border-bottom: 1px solid rgba(11, 31, 51, 0.13);
+        gap: 18px;
+      }
+
+      .contact-row dt {
+        color: rgba(11, 31, 51, 0.44);
+        font-size: 9px;
+        font-weight: 800;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+      }
+
+      .contact-row dd {
+        margin: 0;
+        color: var(--navy);
+        font-size: 14px;
+        font-weight: 750;
+        line-height: 1.55;
+      }
+
+      .contact-row a {
+        color: inherit;
+        text-decoration: none;
+        transition: color 180ms ease;
+      }
+
+      .contact-row a:hover { color: var(--red); }
+
+      .contact-actions {
+        display: flex;
+        margin-top: 34px;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .contact-booking,
+      .contact-route {
+        display: inline-flex;
+        min-height: 54px;
+        padding: 0 21px;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        border-radius: 999px;
+        cursor: pointer;
+        font: inherit;
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-decoration: none;
+        text-transform: uppercase;
+        transition: color 180ms ease, border-color 180ms ease, background 180ms ease, transform 180ms ease;
+      }
+
+      .contact-booking {
+        border: 1px solid var(--red);
+        color: white;
+        background: var(--red);
+        box-shadow: 0 14px 30px rgba(213, 45, 53, 0.19);
+      }
+
+      .contact-route {
+        border: 1px solid rgba(11, 31, 51, 0.16);
+        color: var(--navy);
+        background: transparent;
+      }
+
+      .contact-booking:hover,
+      .contact-route:hover { transform: translateY(-2px); }
+      .contact-route:hover { border-color: var(--navy); }
+
+      .contact-map {
+        position: relative;
+        min-height: 650px;
+        overflow: hidden;
+        color: white;
+        background:
+          linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+          radial-gradient(circle at 62% 43%, rgba(201, 154, 69, 0.16), transparent 28%),
+          #081827;
+        background-size: 52px 52px, 52px 52px, auto, auto;
+        box-shadow: 0 32px 80px rgba(11, 31, 51, 0.2);
+      }
+
+      .contact-map svg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .map-road {
+        fill: none;
+        stroke: rgba(255, 255, 255, 0.16);
+        stroke-width: 9;
+        stroke-linecap: round;
+      }
+
+      .map-road.is-gold { stroke: rgba(201, 154, 69, 0.47); stroke-width: 5; }
+
+      .map-pin {
+        position: absolute;
+        top: 42%;
+        left: 58%;
+        z-index: 2;
+        display: grid;
+        width: 66px;
+        height: 66px;
+        place-items: center;
+        border: 10px solid rgba(213, 45, 53, 0.2);
+        border-radius: 50%;
+        color: white;
+        background: var(--red);
+        background-clip: padding-box;
+        box-shadow: 0 18px 35px rgba(213, 45, 53, 0.33);
+        transform: translate(-50%, -50%);
+        animation: mapPinPulse 2.8s ease-in-out infinite;
+      }
+
+      .map-pin::before {
+        content: "";
+        width: 11px;
+        height: 11px;
+        border-radius: 50%;
+        background: white;
+      }
+
+      @keyframes mapPinPulse {
+        0%, 100% { transform: translate(-50%, -50%) scale(1); }
+        50% { transform: translate(-50%, -50%) scale(1.06); }
+      }
+
+      .map-label {
+        position: absolute;
+        top: calc(42% + 46px);
+        left: 58%;
+        z-index: 2;
+        padding: 8px 11px;
+        color: white;
+        background: rgba(1, 9, 17, 0.8);
+        font-size: 8px;
+        font-weight: 800;
+        letter-spacing: 0.11em;
+        text-transform: uppercase;
+        transform: translateX(-50%);
+        white-space: nowrap;
+      }
+
+      .map-card {
+        position: absolute;
+        right: 24px;
+        bottom: 24px;
+        left: 24px;
+        z-index: 3;
+        display: flex;
+        padding: 21px 22px;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 22px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(1, 9, 17, 0.78);
+        backdrop-filter: blur(13px);
+      }
+
+      .map-card small {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--gold);
+        font-size: 8px;
+        font-weight: 800;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+      }
+
+      .map-card strong {
+        display: block;
+        max-width: 320px;
+        font-size: 14px;
+        line-height: 1.45;
+      }
+
+      .map-card span {
+        flex: 0 0 auto;
+        color: rgba(255, 255, 255, 0.44);
+        font-size: 9px;
+        font-weight: 800;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+      }
+
+      .site-footer {
+        position: relative;
+        padding: 68px 0 24px;
+        overflow: hidden;
+        color: white;
+        background:
+          radial-gradient(circle at 12% 20%, rgba(201, 154, 69, 0.11), transparent 25%),
+          #06131f;
+      }
+
+      .footer-inner {
+        position: relative;
+        z-index: 1;
+        width: min(1440px, calc(100% - 64px));
+        margin-inline: auto;
+      }
+
+      .footer-main {
+        display: grid;
+        padding-bottom: 54px;
+        grid-template-columns: minmax(250px, 1fr) 0.55fr 0.55fr;
+        gap: clamp(42px, 7vw, 110px);
+      }
+
+      .footer-brand {
+        display: inline-flex;
+        width: fit-content;
+        padding: 5px 14px;
+        border-radius: 14px;
+        background: rgba(247, 243, 234, 0.95);
+      }
+
+      .footer-brand img {
+        display: block;
+        width: 184px;
+        height: 100px;
+        object-fit: contain;
+      }
+
+      .footer-tagline {
+        max-width: 340px;
+        margin: 22px 0 0;
+        color: rgba(255, 255, 255, 0.47);
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 1.7;
+      }
+
+      .footer-column h3 {
+        margin: 8px 0 22px;
+        color: var(--gold);
+        font-size: 9px;
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .footer-links {
+        display: grid;
+        margin: 0;
+        padding: 0;
+        gap: 12px;
+        list-style: none;
+      }
+
+      .footer-links a,
+      .footer-links button {
+        width: fit-content;
+        padding: 0;
+        border: 0;
+        color: rgba(255, 255, 255, 0.68);
+        background: transparent;
+        cursor: pointer;
+        font: inherit;
+        font-size: 11px;
+        font-weight: 700;
+        line-height: 1.5;
+        text-align: left;
+        text-decoration: none;
+        transition: color 180ms ease;
+      }
+
+      .footer-links a:hover,
+      .footer-links button:hover { color: white; }
+
+      .footer-bottom {
+        display: flex;
+        padding-top: 22px;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        color: rgba(255, 255, 255, 0.32);
+        font-size: 8px;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      @media (min-width: 761px) and (max-width: 1100px) {
+        .site-header { width: calc(100% - 32px); }
+        .brand img { width: 168px; height: 108px; }
+        .nav { gap: 14px; font-size: 9px; }
+        .header-action { padding: 11px 14px; font-size: 10px; }
+        .contact-details { display: none; }
+        .review-card { flex-basis: calc((100% - 20px) / 2); }
+        .reviews-head { grid-template-columns: minmax(0, 1fr) 240px; gap: 30px; }
+        .contact-inner { grid-template-columns: minmax(300px, 0.85fr) minmax(410px, 1.15fr); gap: 38px; }
+        .contact-map { min-height: 580px; }
+      }
+
+      @media (max-width: 760px) {
+        html { scroll-padding-top: 86px; }
+        #home,
+        #directions,
+        #athletes,
+        #reviews,
+        #symbols,
+        #contact { scroll-margin-top: 86px; }
+        body.menu-open { overflow: hidden; }
+        .prototype { padding-top: 118px; }
+        .site-header {
+          width: min(100% - 32px, 560px);
+          height: 118px;
+        }
+        .site-header.is-scrolled {
+          top: 8px;
+          width: calc(100% - 16px);
+          height: 74px;
+          padding: 0 10px 0 14px;
+          border-radius: 15px;
+        }
+        .brand img { width: 154px; height: 96px; }
+        .site-header.is-scrolled .brand img { width: 122px; height: 67px; }
+        .nav {
+          position: fixed;
+          top: 0;
+          right: 0;
+          z-index: 60;
+          display: flex;
+          width: min(86vw, 370px);
+          height: 100dvh;
+          padding: 108px 28px 34px;
+          align-items: stretch;
+          flex-direction: column;
+          gap: 4px;
+          color: white;
+          background:
+            radial-gradient(circle at 80% 12%, rgba(201, 154, 69, 0.2), transparent 28%),
+            linear-gradient(145deg, #102942, #071522 72%);
+          box-shadow: -24px 0 60px rgba(1, 9, 17, 0.28);
+          transform: translateX(106%);
+          transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .site-header.menu-open .nav { transform: translateX(0); }
+        .nav a {
+          padding: 17px 0;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+          color: rgba(255, 255, 255, 0.72);
+          font-size: 17px;
+          letter-spacing: 0.045em;
+        }
+        .nav a::after {
+          top: 50%;
+          right: 0;
+          bottom: auto;
+          left: auto;
+          width: 24px;
+          height: 2px;
+        }
+        .nav a:hover,
+        .nav a.is-active { color: white; }
+        .nav-mobile-contact {
+          display: block;
+          margin-top: auto;
+          color: rgba(255, 255, 255, 0.48);
+          font-size: 11px;
+          font-weight: 700;
+          line-height: 1.7;
+          letter-spacing: 0.04em;
+        }
+        .nav-mobile-contact a {
+          display: block;
+          padding: 0;
+          border: 0;
+          color: white;
+          font-size: 15px;
+          letter-spacing: 0.02em;
+          text-transform: none;
+        }
+        .nav-mobile-contact a::after { display: none; }
+        .nav-booking {
+          display: flex;
+          min-height: 50px;
+          margin: 20px 0 0;
+          padding: 0 16px;
+          align-items: center;
+          justify-content: space-between;
+          border: 0;
+          border-radius: 999px;
+          color: white;
+          background: var(--red);
+          cursor: pointer;
+          font: inherit;
+          font-size: 11px;
+          font-weight: 800;
+          letter-spacing: 0.07em;
+          text-transform: uppercase;
+        }
+        .menu-toggle {
+          position: relative;
+          z-index: 70;
+          display: grid;
+          width: 46px;
+          height: 46px;
+          padding: 0;
+          place-items: center;
+          border: 1px solid rgba(11, 31, 51, 0.14);
+          border-radius: 50%;
+          color: var(--navy);
+          background: rgba(247, 243, 234, 0.78);
+          cursor: pointer;
+        }
+        .menu-toggle-lines,
+        .menu-toggle-lines::before,
+        .menu-toggle-lines::after {
+          display: block;
+          width: 18px;
+          height: 2px;
+          background: currentColor;
+          transition: transform 220ms ease, opacity 180ms ease;
+        }
+        .menu-toggle-lines { position: relative; }
+        .menu-toggle-lines::before,
+        .menu-toggle-lines::after {
+          content: "";
+          position: absolute;
+          left: 0;
+        }
+        .menu-toggle-lines::before { top: -6px; }
+        .menu-toggle-lines::after { top: 6px; }
+        .site-header.menu-open .menu-toggle {
+          border-color: rgba(255, 255, 255, 0.18);
+          color: white;
+          background: rgba(255, 255, 255, 0.08);
+        }
+        .site-header.menu-open .menu-toggle-lines { background: transparent; }
+        .site-header.menu-open .menu-toggle-lines::before { top: 0; transform: rotate(45deg); }
+        .site-header.menu-open .menu-toggle-lines::after { top: 0; transform: rotate(-45deg); }
+        .nav-backdrop {
+          position: fixed;
+          inset: 0;
+          z-index: 45;
+          display: block;
+          border: 0;
+          background: rgba(1, 9, 17, 0.52);
+          opacity: 0;
+          pointer-events: none;
+          transition: opacity 220ms ease;
+          backdrop-filter: blur(3px);
+        }
+        body.menu-open .nav-backdrop { opacity: 1; pointer-events: auto; }
+        .contact { display: none; }
+        .booking-modal {
+          padding: 0;
+          align-items: end;
+        }
+        .booking-dialog {
+          width: 100%;
+          max-height: 94dvh;
+          grid-template-rows: auto minmax(0, 1fr);
+          grid-template-columns: 1fr;
+          border-radius: 22px 22px 0 0;
+          transform: translateY(34px);
+        }
+        .booking-aside {
+          min-height: 0;
+          padding: 30px 24px 27px;
+        }
+        .booking-aside::after,
+        .booking-steps { display: none; }
+        .booking-aside h2 {
+          max-width: 310px;
+          margin: 18px 0 12px;
+          font-size: 38px;
+        }
+        .booking-aside > p { max-width: 320px; font-size: 11px; line-height: 1.6; }
+        .booking-content {
+          min-height: 0;
+          padding: 31px 20px 28px;
+        }
+        .booking-close {
+          top: 14px;
+          right: 14px;
+          width: 40px;
+          height: 40px;
+          color: white;
+          border-color: rgba(255, 255, 255, 0.2);
+          background: rgba(255, 255, 255, 0.08);
+        }
+        .booking-form-head { margin-bottom: 24px; }
+        .booking-form-head h3 { font-size: 30px; }
+        .booking-form { grid-template-columns: 1fr; gap: 13px; }
+        .booking-field.is-wide,
+        .booking-consent,
+        .booking-submit,
+        .booking-privacy { grid-column: 1; }
+        .booking-field { gap: 6px; }
+        .booking-field input,
+        .booking-field select { min-height: 50px; }
+        .booking-error { min-height: 11px; }
+        .booking-success {
+          min-height: 440px;
+          padding: 20px 0;
+        }
+        .booking-success h3 { font-size: 42px; }
+        .hero { width: min(100% - 32px, 560px); min-height: calc(100svh - 118px); align-items: flex-start; padding-top: clamp(34px, 8vh, 70px); }
+        .hero-copy { width: 100%; }
+        .hero-image { object-position: 66% center; }
+        .hero-wash { background: linear-gradient(180deg, rgba(247, 243, 234, 0.9), rgba(247, 243, 234, 0.52) 43%, rgba(247, 243, 234, 0.05) 72%), linear-gradient(90deg, rgba(247, 243, 234, 0.65), transparent); }
+        .hero-grid { mask-image: linear-gradient(180deg, black 0 45%, transparent 80%); }
+        h1 { max-width: 335px; font-size: clamp(44px, 13vw, 66px); }
+        .hero-description { max-width: 305px; margin: 22px 0 28px; font-size: 15px; }
+        .hero-actions { align-items: flex-start; flex-direction: column; gap: 16px; }
+        .hero-note { font-size: 17px; }
+        .directions { padding: 76px 0 92px; }
+        .directions-head,
+        .carousel-shell { width: calc(100% - 32px); }
+        .directions-head { align-items: flex-start; margin-bottom: 25px; }
+        .directions h2 { max-width: 280px; font-size: 43px; }
+        .carousel-controls { padding-top: 44px; }
+        .carousel-arrow { width: 44px; height: 44px; }
+        .directions-track { gap: 14px; }
+        .sport-card { flex-basis: min(78vw, 286px); }
+        .athletes { padding: 76px 0 92px; }
+        .athletes-head,
+        .athlete-stage { width: 100%; }
+        .athletes-head {
+          display: block;
+          width: calc(100% - 32px);
+          margin-bottom: 26px;
+        }
+        .athletes h2 { max-width: 350px; font-size: 43px; }
+        .athletes-lead { max-width: 300px; margin-top: 20px; }
+        .athlete-slides {
+          display: flex;
+          min-height: 0;
+          gap: 14px;
+          overflow-x: auto;
+          padding: 0 16px 14px;
+          border: 0;
+          background: transparent;
+          box-shadow: none;
+          scroll-behavior: smooth;
+          scroll-snap-type: x mandatory;
+          scrollbar-width: none;
+          touch-action: pan-x pan-y;
+        }
+        .athlete-slides::-webkit-scrollbar { display: none; }
+        .athlete-slide,
+        .athlete-slide.is-active {
+          position: relative;
+          inset: auto;
+          display: block;
+          flex: 0 0 calc(100vw - 48px);
+          height: min(690px, 78svh);
+          min-height: 570px;
+          overflow: hidden;
+          border: 1px solid rgba(255, 255, 255, 0.11);
+          opacity: 1;
+          pointer-events: auto;
+          scroll-snap-align: center;
+        }
+        .athlete-slide::before {
+          z-index: 1;
+          background: linear-gradient(0deg, #091827 0%, rgba(9, 24, 39, 0.96) 30%, rgba(9, 24, 39, 0.18) 64%, rgba(9, 24, 39, 0.06) 100%);
+        }
+        .athlete-slide::after {
+          top: 10%;
+          right: 12%;
+          width: 70%;
+        }
+        .athlete-ghost {
+          top: 3%;
+          left: 4%;
+          font-size: 78px;
+          opacity: 0.7;
+        }
+        .athlete-photo {
+          inset: 0;
+          align-items: flex-start;
+        }
+        .athlete-photo img,
+        .athlete-slide.is-active .athlete-photo img {
+          width: 100%;
+          height: 67%;
+          object-position: var(--athlete-mobile-position, center top);
+          opacity: 1;
+          transform: none;
+        }
+        .athlete-copy {
+          position: absolute;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          max-width: none;
+          min-height: 42%;
+          padding: 26px 23px 25px;
+          justify-content: flex-end;
+        }
+        .athlete-index { margin-bottom: 10px; font-size: 9px; }
+        .athlete-copy h3 { font-size: clamp(38px, 12vw, 52px); }
+        .athlete-sport { margin: 14px 0 5px; font-size: 9px; }
+        .athlete-achievement { font-size: 19px; }
+        .athlete-motto { display: none; }
+        .athlete-nav { display: none; }
+        .athlete-mobile-status {
+          display: flex;
+          width: calc(100% - 32px);
+          margin: 16px auto 0;
+          align-items: center;
+          justify-content: space-between;
+          color: rgba(255, 255, 255, 0.56);
+          font-size: 10px;
+          font-weight: 800;
+          letter-spacing: 0.11em;
+          text-transform: uppercase;
+        }
+        .athlete-dots {
+          display: flex;
+          gap: 6px;
+        }
+        .athlete-dot {
+          width: 18px;
+          height: 3px;
+          background: rgba(255, 255, 255, 0.18);
+          transition: width 180ms ease, background 180ms ease;
+        }
+        .athlete-dot.is-active { width: 34px; background: var(--red); }
+        .reviews { padding: 76px 0 88px; }
+        .reviews-head {
+          display: block;
+          width: calc(100% - 32px);
+          margin-bottom: 28px;
+        }
+        .reviews h2 { max-width: 350px; font-size: 43px; }
+        .reviews-summary {
+          max-width: 280px;
+          margin-top: 24px;
+          padding-left: 15px;
+        }
+        .reviews-summary strong { margin-bottom: 4px; font-size: 25px; }
+        .reviews-summary span { font-size: 9px; }
+        .reviews-shell { width: 100%; }
+        .reviews-track {
+          gap: 14px;
+          padding: 3px 16px 21px;
+          scroll-padding-inline: 16px;
+        }
+        .review-card {
+          min-height: 405px;
+          flex-basis: calc(100vw - 48px);
+          padding: 28px 24px;
+        }
+        .review-card:hover,
+        .review-card.is-current { transform: none; }
+        .review-text { margin: 42px 0 30px; font-size: 19px; }
+        .reviews-footer {
+          width: calc(100% - 32px);
+          margin-inline: auto;
+        }
+        .reviews-controls { display: none; }
+        .reviews-demo { display: none; }
+        .symbols { padding: 76px 0 88px; }
+        .symbols.has-scroll-motion {
+          min-height: 0;
+          padding: 76px 0 88px;
+        }
+        .symbols.has-scroll-motion .symbols-inner {
+          position: relative;
+          top: auto;
+          min-height: 0;
+        }
+        .symbols-inner {
+          display: block;
+          width: calc(100% - 32px);
+          min-height: 0;
+        }
+        .symbols h2 { max-width: 350px; font-size: 45px; }
+        .symbols-description { max-width: 340px; margin: 22px 0 26px; font-size: 14px; }
+        .symbols-note { margin-top: 27px; }
+        .award-stage {
+          min-height: 500px;
+          margin-top: 38px;
+        }
+        .stage-label { top: 16px; left: 17px; }
+        .stage-axis { right: 16px; bottom: 14px; }
+        .stage-focus { bottom: 14px; left: 16px; max-width: 210px; font-size: 7px; }
+        .rings-art { top: 12%; right: -12%; width: 97%; }
+        .certificate-art {
+          top: 15%;
+          right: 5%;
+          width: 132px;
+          height: 175px;
+          padding: 12px;
+        }
+        .certificate-art::before { inset: 5px; }
+        .certificate-kicker { margin-top: 7px; font-size: 5px; }
+        .certificate-art strong { max-width: 80px; margin-top: 8px; font-size: 15px; }
+        .certificate-seal { right: 12px; bottom: 13px; width: 25px; height: 25px; }
+        .certificate-line + .certificate-line { margin-top: 5px; }
+        .medal-art {
+          right: 21%;
+          bottom: 11%;
+          width: 105px;
+          height: 105px;
+          border-width: 8px;
+        }
+        .medal-art::before { inset: 11px; font-size: 37px; }
+        .medal-ribbon { top: -52px; left: 34px; width: 35px; height: 60px; }
+        .trophy-art { bottom: 7%; left: 8%; width: 51%; }
+        .contact-section { padding: 76px 0 88px; }
+        .contact-inner {
+          display: block;
+          width: calc(100% - 32px);
+        }
+        .contact-copy { padding: 0; }
+        .contact-section h2 { max-width: 350px; font-size: 45px; }
+        .contact-lead { margin: 22px 0 30px; font-size: 14px; }
+        .contact-row {
+          grid-template-columns: 82px 1fr;
+          padding: 16px 0;
+          gap: 12px;
+        }
+        .contact-row dd { font-size: 12px; }
+        .contact-actions { align-items: stretch; flex-direction: column; }
+        .contact-booking,
+        .contact-route { width: 100%; }
+        .contact-map {
+          min-height: 450px;
+          margin-top: 46px;
+        }
+        .map-pin { width: 58px; height: 58px; }
+        .map-card {
+          right: 14px;
+          bottom: 14px;
+          left: 14px;
+          padding: 17px;
+          align-items: flex-start;
+          flex-direction: column;
+          gap: 10px;
+        }
+        .map-card strong { max-width: 260px; font-size: 12px; }
+        .site-footer { padding: 50px 0 20px; }
+        .footer-inner { width: calc(100% - 32px); }
+        .footer-main {
+          padding-bottom: 38px;
+          grid-template-columns: 1fr 1fr;
+          gap: 38px 24px;
+        }
+        .footer-intro { grid-column: 1 / -1; }
+        .footer-brand img { width: 150px; height: 78px; }
+        .footer-tagline { max-width: 300px; margin-top: 16px; }
+        .footer-column h3 { margin-top: 0; }
+        .footer-bottom {
+          align-items: flex-start;
+          flex-direction: column;
+          gap: 8px;
+          line-height: 1.5;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        .directions-track { scroll-behavior: auto; }
+        .athlete-slides { scroll-behavior: auto; }
+        .reviews-track { scroll-behavior: auto; }
+        .sport-card { animation: none; }
+        .card-media img,
+        .carousel-arrow,
+        .sport-card,
+        .athlete-slide,
+        .athlete-photo img,
+        .athlete-ghost,
+        .athlete-tab,
+        .review-card,
+        .reviews-dot,
+        .reviews-arrow,
+        .booking-modal,
+        .booking-dialog,
+        .booking-submit { transition: none; }
+        .map-pin { animation: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#home" data-nav-target="home" aria-label="Олимп — спортивный комплекс">
+        <img src="logotip-transparent.webp" alt="Олимп — спортивный комплекс" width="1697" height="927" />
+      </a>
+      <nav class="nav" id="primary-nav" aria-label="Основная навигация">
+        <a class="is-active" href="#home" data-nav-target="home" aria-current="page">Главная</a>
+        <a href="#directions" data-nav-target="directions">Направления</a>
+        <a href="#athletes" data-nav-target="athletes">Лучшие спортсмены</a>
+        <a href="#reviews" data-nav-target="reviews">Отзывы</a>
+        <a href="#symbols" data-nav-target="symbols">Символы победы</a>
+        <a href="#contact" data-nav-target="contact">Контакты</a>
+        <div class="nav-mobile-contact">
+          <a href="tel:+78005552028">+7 (800) 555-20-28</a>
+          Москва, Олимпийский проспект, 28
+          <button class="nav-booking" type="button" data-booking-open>Записаться онлайн <span>↗</span></button>
+        </div>
+      </nav>
+      <button class="menu-toggle" type="button" aria-label="Открыть меню" aria-controls="primary-nav" aria-expanded="false">
+        <span class="menu-toggle-lines" aria-hidden="true"></span>
+      </button>
+      <div class="contact">
+        <button class="header-action" type="button" data-booking-open>Записаться онлайн</button>
+        <div class="contact-details">+7 (800) 555-20-28<br />Москва, Олимпийский проспект, 28</div>
+      </div>
+    </header>
+    <button class="nav-backdrop" type="button" aria-label="Закрыть меню" tabindex="-1"></button>
+
+    <div class="booking-modal" id="booking-modal" aria-hidden="true">
+      <button class="booking-backdrop" type="button" data-booking-close aria-label="Закрыть онлайн-запись"></button>
+      <div class="booking-dialog" role="dialog" aria-modal="true" aria-labelledby="booking-title">
+        <button class="booking-close" type="button" data-booking-close aria-label="Закрыть">×</button>
+
+        <div class="booking-aside">
+          <span class="booking-mark">Онлайн-запись · демо</span>
+          <h2>Первый шаг к новой цели</h2>
+          <p>Выберите направление и удобное время. В рабочей версии администратор подтвердит запись звонком.</p>
+          <ol class="booking-steps" aria-label="Этапы записи">
+            <li><b>01</b> Контактные данные</li>
+            <li><b>02</b> Направление и время</li>
+            <li><b>03</b> Подтверждение заявки</li>
+          </ol>
+        </div>
+
+        <div class="booking-content">
+          <div class="booking-form-view">
+            <div class="booking-form-head">
+              <span>Пробное занятие</span>
+              <h3 id="booking-title">Записаться в «Олимп»</h3>
+            </div>
+
+            <form class="booking-form" id="booking-form" novalidate>
+              <div class="booking-field">
+                <label for="booking-name">Ваше имя</label>
+                <input id="booking-name" name="name" type="text" autocomplete="name" placeholder="Например, Артём" required />
+                <span class="booking-error" id="booking-name-error"></span>
+              </div>
+
+              <div class="booking-field">
+                <label for="booking-phone">Телефон</label>
+                <input id="booking-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 (___) ___-__-__" required />
+                <span class="booking-error" id="booking-phone-error"></span>
+              </div>
+
+              <div class="booking-field is-wide">
+                <label for="booking-sport">Направление</label>
+                <select id="booking-sport" name="sport" required>
+                  <option value="">Выберите направление</option>
+                  <option>Бокс</option>
+                  <option>Плавание</option>
+                  <option>Тяжёлая атлетика</option>
+                  <option>Армрестлинг</option>
+                  <option>Лёгкая атлетика</option>
+                  <option>Гимнастика</option>
+                  <option>Тренажёрный зал</option>
+                  <option>Вольная борьба</option>
+                </select>
+                <span class="booking-error" id="booking-sport-error"></span>
+              </div>
+
+              <div class="booking-field">
+                <label for="booking-date">Дата</label>
+                <input id="booking-date" name="date" type="date" required />
+                <span class="booking-error" id="booking-date-error"></span>
+              </div>
+
+              <div class="booking-field">
+                <label for="booking-time">Время</label>
+                <select id="booking-time" name="time" required>
+                  <option value="">Выберите время</option>
+                  <option value="09:00">09:00</option>
+                  <option value="11:00">11:00</option>
+                  <option value="13:00">13:00</option>
+                  <option value="15:00">15:00</option>
+                  <option value="17:00">17:00</option>
+                  <option value="19:00">19:00</option>
+                </select>
+                <span class="booking-error" id="booking-time-error"></span>
+              </div>
+
+              <label class="booking-consent" for="booking-consent">
+                <input id="booking-consent" name="consent" type="checkbox" required />
+                <span>Согласен на обработку данных для обратной связи по заявке</span>
+              </label>
+
+              <button class="booking-submit" type="submit">Отправить заявку <span>↗</span></button>
+              <p class="booking-privacy">Демонстрационная форма: данные никуда не отправляются и не сохраняются.</p>
+            </form>
+          </div>
+
+          <div class="booking-success" aria-live="polite" hidden>
+            <span class="booking-success-icon" aria-hidden="true">✓</span>
+            <span class="booking-mark">Заявка сформирована</span>
+            <h3 id="booking-success-title">Место на тренировке за вами</h3>
+            <p>Это деморежим: заявка не отправлена администратору, но весь пользовательский сценарий уже работает.</p>
+            <div class="booking-summary" id="booking-summary"></div>
+            <button class="booking-done" type="button" data-booking-done>Готово</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <main class="prototype" id="home">
+      <img class="hero-image" src="hero-olimp-concept.webp" alt="" width="1672" height="941" fetchpriority="high" decoding="async" />
+      <div class="hero-wash"></div>
+      <div class="hero-grid"></div>
+
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow" id="hero-eyebrow">Спортивный комплекс</p>
+          <h1 id="hero-title">Твой <em>Олимп</em> начинается здесь</h1>
+          <p class="hero-description" id="hero-description">Пространство для тренировок, восстановления и новых побед.</p>
+          <div class="hero-actions">
+            <a class="hero-button" href="#directions" id="hero-button">Выбрать направление <span>↗</span></a>
+            <span class="hero-note">Сильнее с каждым днём</span>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <section class="directions" id="directions" aria-labelledby="directions-title">
+      <div class="directions-head">
+        <div>
+          <p class="section-kicker">Направления комплекса</p>
+          <h2 id="directions-title">Выбери свою дисциплину</h2>
+        </div>
+        <div class="carousel-controls" aria-label="Управление каруселью">
+          <button class="carousel-arrow" type="button" data-direction="-1" aria-label="Предыдущие направления">←</button>
+          <button class="carousel-arrow" type="button" data-direction="1" aria-label="Следующие направления">→</button>
+        </div>
+      </div>
+
+      <div class="carousel-shell">
+        <div class="directions-track" id="directions-track" aria-label="Спортивные направления">
+          <article class="sport-card" style="--accent:#d52d35">
+            <div class="card-media" style="--position:52% center">
+              <img src="boxing-gassiev-card.webp" alt="Боксёр Мурат Гассиев" width="900" height="1200" loading="lazy" decoding="async" />
+              <span class="card-number">01 / 08</span>
+              <span class="card-role">Ориентир · Мурат Гассиев</span>
+            </div>
+            <div class="card-body">
+              <h3>Бокс</h3>
+              <dl class="card-meta">
+                <div><dt>Когда</dt><dd>Пн–Сб · 17:00–21:00</dd></div>
+                <div><dt>Возраст</dt><dd>С 12 лет</dd></div>
+              </dl>
+              <button class="card-link" type="button" data-booking-open data-booking-sport="Бокс">Записаться <span>↗</span></button>
+            </div>
+          </article>
+
+          <article class="sport-card" style="--accent:#1687a7">
+            <div class="card-media" style="--position:48% 20%">
+              <img src="photo_5429459573141084355_y.jpg" alt="Пловец Майкл Фелпс" width="719" height="1280" loading="lazy" decoding="async" />
+              <span class="card-number">02 / 08</span>
+              <span class="card-role">Ориентир · Майкл Фелпс</span>
+            </div>
+            <div class="card-body">
+              <h3>Плавание</h3>
+              <dl class="card-meta">
+                <div><dt>Когда</dt><dd>Ежедневно · 07:00–22:00</dd></div>
+                <div><dt>Возраст</dt><dd>С 6 лет</dd></div>
+              </dl>
+              <button class="card-link" type="button" data-booking-open data-booking-sport="Плавание">Записаться <span>↗</span></button>
+            </div>
+          </article>
+
+          <article class="sport-card" style="--accent:#c99a45">
+            <div class="card-media" style="--position:50% 18%">
+              <img src="photo_5429459573141084353_y.jpg" alt="Тяжелоатлет Руслан Албегов" width="718" height="1280" loading="lazy" decoding="async" />
+              <span class="card-number">03 / 08</span>
+              <span class="card-role">Ориентир · Руслан Албегов</span>
+            </div>
+            <div class="card-body">
+              <h3>Штанга</h3>
+              <dl class="card-meta">
+                <div><dt>Когда</dt><dd>Пн–Сб · 16:00–20:00</dd></div>
+                <div><dt>Возраст</dt><dd>С 14 лет</dd></div>
+              </dl>
+              <button class="card-link" type="button" data-booking-open data-booking-sport="Тяжёлая атлетика">Записаться <span>↗</span></button>
+            </div>
+          </article>
+
+          <article class="sport-card" style="--accent:#7d3a8e">
+            <div class="card-media" style="--position:50% 16%">
+              <img src="photo_5429459573141084356_y.jpg" alt="Спортсмен по армрестлингу" width="719" height="1280" loading="lazy" decoding="async" />
+              <span class="card-number">04 / 08</span>
+              <span class="card-role">Вдохновлено чемпионами</span>
+            </div>
+            <div class="card-body">
+              <h3>Армрестлинг</h3>
+              <dl class="card-meta">
+                <div><dt>Когда</dt><dd>Вт–Вс · 18:00–21:00</dd></div>
+                <div><dt>Возраст</dt><dd>С 14 лет</dd></div>
+              </dl>
+              <button class="card-link" type="button" data-booking-open data-booking-sport="Армрестлинг">Записаться <span>↗</span></button>
+            </div>
+          </article>
+
+          <article class="sport-card" style="--accent:#e75b75">
+            <div class="card-media">
+              <img src="photo_5429459573141084354_y.jpg" alt="Спортсменка по гимнастике" width="719" height="1280" loading="lazy" decoding="async" />
+              <span class="card-number">05 / 08</span>
+              <span class="card-role">Вдохновлено чемпионами</span>
+            </div>
+            <div class="card-body">
+              <h3>Гимнастика</h3>
+              <dl class="card-meta">
+                <div><dt>Когда</dt><dd>Пн–Сб · 15:00–20:00</dd></div>
+                <div><dt>Возраст</dt><dd>С 4 лет</dd></div>
+              </dl>
+              <button class="card-link" type="button" data-booking-open data-booking-sport="Гимнастика">Записаться <span>↗</span></button>
+            </div>
+          </article>
+
+          <article class="sport-card" style="--accent:#e67835">
+            <div class="card-media" style="--position:50% top">
+              <img src="athletics-clean.webp" alt="Легкоатлетка Алиса Шмидт" width="941" height="1672" loading="lazy" decoding="async" />
+              <span class="card-number">06 / 08</span>
+              <span class="card-role">Ориентир · Алиса Шмидт</span>
+            </div>
+            <div class="card-body">
+              <h3>Лёгкая атлетика</h3>
+              <dl class="card-meta">
+                <div><dt>Когда</dt><dd>Ежедневно · 08:00–20:00</dd></div>
+                <div><dt>Возраст</dt><dd>С 8 лет</dd></div>
+              </dl>
+              <button class="card-link" type="button" data-booking-open data-booking-sport="Лёгкая атлетика">Записаться <span>↗</span></button>
+            </div>
+          </article>
+
+          <article class="sport-card" style="--accent:#263f58">
+            <div class="card-media">
+              <img src="kach.jpg" alt="Тренажёрный зал" width="1500" height="2250" loading="lazy" decoding="async" />
+              <span class="card-number">07 / 08</span>
+              <span class="card-role">Пространство силы</span>
+            </div>
+            <div class="card-body">
+              <h3>Тренажёрный зал</h3>
+              <dl class="card-meta">
+                <div><dt>Когда</dt><dd>Ежедневно · 06:00–23:00</dd></div>
+                <div><dt>Возраст</dt><dd>С 16 лет</dd></div>
+              </dl>
+              <button class="card-link" type="button" data-booking-open data-booking-sport="Тренажёрный зал">Записаться <span>↗</span></button>
+            </div>
+          </article>
+
+          <article class="sport-card" style="--accent:#bd7e2b">
+            <div class="card-media" style="--position:52% center">
+              <img src="photo_5429459573141084351_y.jpg" alt="Борец Заурбек Сидаков" width="719" height="1280" loading="lazy" decoding="async" />
+              <span class="card-number">08 / 08</span>
+              <span class="card-role">Ориентир · Заурбек Сидаков</span>
+            </div>
+            <div class="card-body">
+              <h3>Вольная борьба</h3>
+              <dl class="card-meta">
+                <div><dt>Когда</dt><dd>Ежедневно · 17:00–20:00</dd></div>
+                <div><dt>Возраст</dt><dd>С 8 лет</dd></div>
+              </dl>
+              <button class="card-link" type="button" data-booking-open data-booking-sport="Вольная борьба">Записаться <span>↗</span></button>
+            </div>
+          </article>
+        </div>
+        <p class="carousel-status">Листайте вручную — или карусель продолжит движение сама</p>
+      </div>
+    </section>
+
+    <section class="athletes" id="athletes" aria-labelledby="athletes-title">
+      <div class="athletes-head">
+        <div>
+          <p class="section-kicker">Зал славы Олимпа</p>
+          <h2 id="athletes-title">Наши лучшие спортсмены</h2>
+        </div>
+        <p class="athletes-lead">Пять характеров. Пять дисциплин. Одна привычка — идти до конца.</p>
+      </div>
+
+      <div class="athlete-stage" tabindex="0" aria-label="Галерея лучших спортсменов">
+        <div class="athlete-slides" id="athlete-slides">
+          <article class="athlete-slide is-active" data-athlete="0" style="--glow:rgba(213,45,53,.3)" aria-hidden="false">
+            <span class="athlete-ghost" aria-hidden="true">Абаев</span>
+            <div class="athlete-photo">
+              <img src="Алан Абаев Чемпион европы бокс.jpg" alt="Алан Абаев на боксёрском ринге" loading="lazy" decoding="async" />
+            </div>
+            <div class="athlete-copy">
+              <span class="athlete-index">01 / 05 · Бокс</span>
+              <h3>Алан<br />Абаев</h3>
+              <p class="athlete-sport">Главное достижение</p>
+              <p class="athlete-achievement">Чемпион Европы по боксу</p>
+              <p class="athlete-motto">Характер виден не до удара — характер виден после него.</p>
+            </div>
+          </article>
+
+          <article class="athlete-slide" data-athlete="1" style="--glow:rgba(201,154,69,.25)" aria-hidden="true">
+            <span class="athlete-ghost" aria-hidden="true">Леснар</span>
+            <div class="athlete-photo">
+              <img src="Брок леснар чемпион по тяж атлетике.jpg" alt="Брок Леснар на спортивной арене" loading="lazy" decoding="async" />
+            </div>
+            <div class="athlete-copy">
+              <span class="athlete-index">02 / 05 · Тяжёлая атлетика</span>
+              <h3>Брок<br />Леснар</h3>
+              <p class="athlete-sport">Главное достижение</p>
+              <p class="athlete-achievement">Чемпион мира по тяжёлой атлетике</p>
+              <p class="athlete-motto">Сила становится результатом, когда встречается с дисциплиной.</p>
+            </div>
+          </article>
+
+          <article class="athlete-slide" data-athlete="2" style="--glow:rgba(125,58,142,.3)" aria-hidden="true">
+            <span class="athlete-ghost" aria-hidden="true">Нганну</span>
+            <div class="athlete-photo">
+              <img src="Нгану чемпион мира по армрестлингу.jpg" alt="Фрэнсис Нганну перед соревнованием" loading="lazy" decoding="async" />
+            </div>
+            <div class="athlete-copy">
+              <span class="athlete-index">03 / 05 · Армрестлинг</span>
+              <h3>Фрэнсис<br />Нганну</h3>
+              <p class="athlete-sport">Главное достижение</p>
+              <p class="athlete-achievement">Чемпион мира по армрестлингу</p>
+              <p class="athlete-motto">Побеждает тот, кто умеет держать давление до последней секунды.</p>
+            </div>
+          </article>
+
+          <article class="athlete-slide" data-athlete="3" style="--glow:rgba(230,120,53,.3)" aria-hidden="true">
+            <span class="athlete-ghost" aria-hidden="true">Болт</span>
+            <div class="athlete-photo">
+              <img src="Усэйн Болт чемпион мира по Л А.jpg" alt="Усэйн Болт во время забега" loading="lazy" decoding="async" />
+            </div>
+            <div class="athlete-copy">
+              <span class="athlete-index">04 / 05 · Лёгкая атлетика</span>
+              <h3>Усэйн<br />Болт</h3>
+              <p class="athlete-sport">Главное достижение</p>
+              <p class="athlete-achievement">Чемпион мира по лёгкой атлетике</p>
+              <p class="athlete-motto">Скорость начинается задолго до старта — с ежедневной работы.</p>
+            </div>
+          </article>
+
+          <article class="athlete-slide" data-athlete="4" style="--glow:rgba(189,126,43,.28)" aria-hidden="true">
+            <span class="athlete-ghost" aria-hidden="true">Валиев</span>
+            <div class="athlete-photo">
+              <img src="Чермен Валиев чемпион мира.jpg" alt="Чермен Валиев с чемпионской медалью" loading="lazy" decoding="async" />
+            </div>
+            <div class="athlete-copy">
+              <span class="athlete-index">05 / 05 · Вольная борьба</span>
+              <h3>Чермен<br />Валиев</h3>
+              <p class="athlete-sport">Главное достижение</p>
+              <p class="athlete-achievement">Чемпион мира по вольной борьбе</p>
+              <p class="athlete-motto">Каждая победа начинается с умения снова подняться.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="athlete-nav" role="tablist" aria-label="Выбор спортсмена">
+          <button class="athlete-tab is-active" type="button" data-athlete-tab="0" role="tab" aria-selected="true"><small>01</small><strong>Алан Абаев</strong></button>
+          <button class="athlete-tab" type="button" data-athlete-tab="1" role="tab" aria-selected="false"><small>02</small><strong>Брок Леснар</strong></button>
+          <button class="athlete-tab" type="button" data-athlete-tab="2" role="tab" aria-selected="false"><small>03</small><strong>Фрэнсис Нганну</strong></button>
+          <button class="athlete-tab" type="button" data-athlete-tab="3" role="tab" aria-selected="false"><small>04</small><strong>Усэйн Болт</strong></button>
+          <button class="athlete-tab" type="button" data-athlete-tab="4" role="tab" aria-selected="false"><small>05</small><strong>Чермен Валиев</strong></button>
+        </div>
+
+        <div class="athlete-mobile-status" aria-live="polite">
+          <span id="athlete-mobile-count">01 / 05</span>
+          <span class="athlete-dots" aria-hidden="true">
+            <i class="athlete-dot is-active"></i>
+            <i class="athlete-dot"></i>
+            <i class="athlete-dot"></i>
+            <i class="athlete-dot"></i>
+            <i class="athlete-dot"></i>
+          </span>
+          <span>Свайп вбок</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="reviews" id="reviews" aria-labelledby="reviews-title">
+      <div class="reviews-head">
+        <div>
+          <p class="section-kicker">Отзывы участников</p>
+          <h2 id="reviews-title">Место, куда хочется возвращаться</h2>
+        </div>
+        <p class="reviews-summary">
+          <strong>4,9 / 5</strong>
+          <span>Средняя оценка атмосферы, тренеров и организации занятий</span>
+        </p>
+      </div>
+
+      <div class="reviews-shell">
+        <div class="reviews-track" id="reviews-track" tabindex="0" aria-label="Отзывы участников комплекса">
+          <article class="review-card is-current">
+            <div class="review-top">
+              <span class="review-quote" aria-hidden="true">“</span>
+              <span class="review-score"><b>5,0</b> / 5</span>
+            </div>
+            <p class="review-text">Пришёл ради бокса, а остался из-за атмосферы. Здесь требовательно, но каждую тренировку понимаешь, зачем делаешь ещё один раунд.</p>
+            <div class="review-person">
+              <span class="review-avatar" aria-hidden="true">АК</span>
+              <div><strong>Артём Крылов</strong><small>Бокс · занимается 2 года</small></div>
+            </div>
+          </article>
+
+          <article class="review-card">
+            <div class="review-top">
+              <span class="review-quote" aria-hidden="true">“</span>
+              <span class="review-score"><b>4,9</b> / 5</span>
+            </div>
+            <p class="review-text">Сын перестал бояться воды и теперь сам ждёт следующего занятия. Для меня главный результат — его уверенность после тренировки.</p>
+            <div class="review-person">
+              <span class="review-avatar" aria-hidden="true">МС</span>
+              <div><strong>Марина Соколова</strong><small>Плавание · мама спортсмена</small></div>
+            </div>
+          </article>
+
+          <article class="review-card">
+            <div class="review-top">
+              <span class="review-quote" aria-hidden="true">“</span>
+              <span class="review-score"><b>5,0</b> / 5</span>
+            </div>
+            <p class="review-text">В тренажёрном зале нет суеты: оборудование на месте, тренер видит технику, программа меняется вместе с результатом.</p>
+            <div class="review-person">
+              <span class="review-avatar" aria-hidden="true">ТД</span>
+              <div><strong>Тимур Дзгоев</strong><small>Тренажёрный зал · 18 месяцев</small></div>
+            </div>
+          </article>
+
+          <article class="review-card">
+            <div class="review-top">
+              <span class="review-quote" aria-hidden="true">“</span>
+              <span class="review-score"><b>4,8</b> / 5</span>
+            </div>
+            <p class="review-text">Нравится подход тренера: сначала точность движения, потом сложность. Дочь стала собраннее и заметно увереннее в себе.</p>
+            <div class="review-person">
+              <span class="review-avatar" aria-hidden="true">ЕМ</span>
+              <div><strong>Елена Мартынова</strong><small>Гимнастика · мама спортсменки</small></div>
+            </div>
+          </article>
+
+          <article class="review-card">
+            <div class="review-top">
+              <span class="review-quote" aria-hidden="true">“</span>
+              <span class="review-score"><b>5,0</b> / 5</span>
+            </div>
+            <p class="review-text">На борьбе быстро понимаешь: сила без дисциплины ничего не значит. Здесь учат работать спокойно и не сдаваться после ошибки.</p>
+            <div class="review-person">
+              <span class="review-avatar" aria-hidden="true">СВ</span>
+              <div><strong>Сергей Волков</strong><small>Вольная борьба · занимается 3 года</small></div>
+            </div>
+          </article>
+        </div>
+
+        <div class="reviews-footer">
+          <div class="reviews-progress">
+            <span class="reviews-count" id="reviews-count" aria-live="polite">01 / 05</span>
+            <span class="reviews-dots" aria-label="Выбор отзыва">
+              <button class="reviews-dot is-active" type="button" data-review-index="0" aria-label="Отзыв 1"></button>
+              <button class="reviews-dot" type="button" data-review-index="1" aria-label="Отзыв 2"></button>
+              <button class="reviews-dot" type="button" data-review-index="2" aria-label="Отзыв 3"></button>
+              <button class="reviews-dot" type="button" data-review-index="3" aria-label="Отзыв 4"></button>
+              <button class="reviews-dot" type="button" data-review-index="4" aria-label="Отзыв 5"></button>
+            </span>
+          </div>
+          <span class="reviews-demo">Демонстрационные истории для прототипа</span>
+          <div class="reviews-controls" aria-label="Управление отзывами">
+            <button class="reviews-arrow" type="button" data-review-direction="-1" aria-label="Предыдущий отзыв">←</button>
+            <button class="reviews-arrow" type="button" data-review-direction="1" aria-label="Следующий отзыв">→</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="symbols" id="symbols" aria-labelledby="symbols-title">
+      <div class="symbols-inner">
+        <div class="symbols-copy">
+          <p class="section-kicker">Этап 05 · Интерактивная витрина</p>
+          <h2 id="symbols-title">Символы<br />победы</h2>
+          <p class="symbols-description">Прокрутка собирает витрину поэтапно: кольца задают пространство, затем появляются кубок, медаль и грамота.</p>
+          <ul class="symbols-list" aria-label="Объекты композиции">
+            <li>Кубок</li>
+            <li>Медаль</li>
+            <li>Грамота</li>
+            <li>Кольца</li>
+          </ul>
+          <p class="symbols-note">Прокрутите, чтобы собрать сцену</p>
+        </div>
+
+        <div class="award-stage" aria-label="Композиция спортивных наград">
+          <canvas class="award-canvas" aria-label="Трёхмерная композиция: кубок, медаль, грамота и олимпийские кольца"></canvas>
+          <span class="stage-label">Олимп · коллекция достижений</span>
+          <span class="stage-focus" aria-live="polite">Наведите на объект</span>
+          <span class="stage-axis">01 / 04</span>
+          <svg class="rings-art" viewBox="0 0 620 290" aria-hidden="true">
+            <circle cx="165" cy="110" r="73" fill="none" stroke="#4b8ec7" stroke-width="17" />
+            <circle cx="312" cy="110" r="73" fill="none" stroke="#d7bc3c" stroke-width="17" />
+            <circle cx="459" cy="110" r="73" fill="none" stroke="#6b8956" stroke-width="17" />
+            <circle cx="238" cy="185" r="73" fill="none" stroke="#222222" stroke-width="17" />
+            <circle cx="386" cy="185" r="73" fill="none" stroke="#ca4043" stroke-width="17" />
+          </svg>
+
+          <div class="certificate-art" aria-label="Грамота">
+            <span class="certificate-kicker">Спортивный комплекс</span>
+            <strong>Грамота<br />Олимп</strong>
+            <span class="certificate-line"></span>
+            <span class="certificate-line"></span>
+            <span class="certificate-seal"></span>
+          </div>
+
+          <div class="medal-art" aria-label="Золотая медаль">
+            <span class="medal-ribbon"></span>
+          </div>
+
+          <div class="trophy-art" aria-label="Золотой кубок">
+            <svg viewBox="0 0 320 430" role="img" aria-label="Золотой кубок">
+              <defs>
+                <linearGradient id="gold-bowl" x1="0" x2="1" y1="0" y2="1">
+                  <stop offset="0" stop-color="#fff2b2" />
+                  <stop offset="0.24" stop-color="#c79230" />
+                  <stop offset="0.54" stop-color="#ffdc73" />
+                  <stop offset="0.78" stop-color="#8a5614" />
+                  <stop offset="1" stop-color="#eab84f" />
+                </linearGradient>
+                <linearGradient id="gold-stem" x1="0" x2="1">
+                  <stop offset="0" stop-color="#8e5918" />
+                  <stop offset="0.5" stop-color="#f9d76f" />
+                  <stop offset="1" stop-color="#8b5513" />
+                </linearGradient>
+                <radialGradient id="gold-shine" cx="35%" cy="20%">
+                  <stop offset="0" stop-color="#fff9d2" stop-opacity=".95" />
+                  <stop offset="1" stop-color="#f5c34f" stop-opacity="0" />
+                </radialGradient>
+              </defs>
+              <path d="M46 68h49v18c0 52 20 86 64 101v40C80 214 46 159 46 92Z" fill="url(#gold-bowl)" stroke="#8b5718" stroke-width="7" />
+              <path d="M274 68h-49v18c0 52-20 86-64 101v40c79-13 113-68 113-135Z" fill="url(#gold-bowl)" stroke="#8b5718" stroke-width="7" />
+              <path d="M75 37h170c-3 98-28 161-85 182C103 198 78 135 75 37Z" fill="url(#gold-bowl)" stroke="#8b5718" stroke-width="8" />
+              <path d="M96 51h128c-5 74-25 125-64 145-40-20-59-71-64-145Z" fill="url(#gold-shine)" opacity=".7" />
+              <ellipse cx="160" cy="37" rx="85" ry="18" fill="#ffe891" stroke="#8b5718" stroke-width="7" />
+              <ellipse cx="160" cy="33" rx="66" ry="10" fill="#8b5718" opacity=".55" />
+              <path d="M137 212h46v80h-46Z" fill="url(#gold-stem)" stroke="#8b5718" stroke-width="6" />
+              <path d="M112 278h96l20 40H92Z" fill="url(#gold-stem)" stroke="#8b5718" stroke-width="7" />
+              <path d="M69 316h182l19 64H50Z" fill="url(#gold-stem)" stroke="#764813" stroke-width="8" />
+              <path d="M80 335h160l-5 27H85Z" fill="#9b6219" opacity=".85" />
+              <circle cx="160" cy="122" r="36" fill="none" stroke="#fff0a3" stroke-width="5" opacity=".68" />
+              <path d="M143 122h34M160 105v34" stroke="#fff4bd" stroke-width="5" stroke-linecap="round" opacity=".8" />
+            </svg>
+          </div>
+          <span class="stage-floor" aria-hidden="true"></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact" aria-labelledby="contact-title">
+      <div class="contact-inner">
+        <div class="contact-copy">
+          <p class="section-kicker">Контакты комплекса</p>
+          <h2 id="contact-title">Начни следующую победу здесь</h2>
+          <p class="contact-lead">Позвоните, напишите или выберите пробное занятие онлайн. В демоверсии используются вымышленные контактные данные.</p>
+
+          <dl class="contact-list">
+            <div class="contact-row">
+              <dt>Телефон</dt>
+              <dd><a href="tel:+78005552028">+7 (800) 555-20-28</a></dd>
+            </div>
+            <div class="contact-row">
+              <dt>Адрес</dt>
+              <dd>Москва, Олимпийский проспект, 28</dd>
+            </div>
+            <div class="contact-row">
+              <dt>Режим</dt>
+              <dd>Пн–Пт · 07:00–23:00<br />Сб–Вс · 08:00–22:00</dd>
+            </div>
+            <div class="contact-row">
+              <dt>Почта</dt>
+              <dd><a href="mailto:hello@olimp-demo.ru">hello@olimp-demo.ru</a></dd>
+            </div>
+          </dl>
+
+          <div class="contact-actions">
+            <button class="contact-booking" type="button" data-booking-open>Записаться онлайн <span>↗</span></button>
+            <a class="contact-route" href="https://yandex.ru/maps/?text=%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%2C%20%D0%9E%D0%BB%D0%B8%D0%BC%D0%BF%D0%B8%D0%B9%D1%81%D0%BA%D0%B8%D0%B9%20%D0%BF%D1%80%D0%BE%D1%81%D0%BF%D0%B5%D0%BA%D1%82%2C%2028" target="_blank" rel="noreferrer">Построить маршрут <span>↗</span></a>
+          </div>
+        </div>
+
+        <div class="contact-map" aria-label="Стилизованная карта расположения спортивного комплекса">
+          <svg viewBox="0 0 760 650" preserveAspectRatio="none" aria-hidden="true">
+            <path class="map-road" d="M-50 115 C140 80 190 220 355 185 S590 48 820 105" />
+            <path class="map-road" d="M90 -30 C125 145 85 290 210 390 S430 510 380 700" />
+            <path class="map-road" d="M725 -20 C610 130 690 250 545 340 S330 430 240 700" />
+            <path class="map-road is-gold" d="M-40 555 C150 500 235 530 350 420 S560 255 805 305" />
+          </svg>
+          <span class="map-pin" aria-hidden="true"></span>
+          <span class="map-label">Спорткомплекс «Олимп»</span>
+          <div class="map-card">
+            <div>
+              <small>Точка назначения</small>
+              <strong>Москва, Олимпийский проспект, 28</strong>
+            </div>
+            <span>55.786 · 37.614</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-main">
+          <div class="footer-intro">
+            <a class="footer-brand" href="#home" data-nav-target="home" aria-label="Олимп — на главную">
+              <img src="logotip-transparent.webp" alt="Олимп — спортивный комплекс" width="1697" height="927" loading="lazy" decoding="async" />
+            </a>
+            <p class="footer-tagline">Сильнее с каждым днём. Пространство для тренировок, характера и новых личных рекордов.</p>
+          </div>
+
+          <div class="footer-column">
+            <h3>Разделы</h3>
+            <ul class="footer-links">
+              <li><a href="#directions" data-nav-target="directions">Направления</a></li>
+              <li><a href="#athletes" data-nav-target="athletes">Лучшие спортсмены</a></li>
+              <li><a href="#reviews" data-nav-target="reviews">Отзывы</a></li>
+              <li><a href="#symbols" data-nav-target="symbols">Символы победы</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h3>Связаться</h3>
+            <ul class="footer-links">
+              <li><a href="tel:+78005552028">+7 (800) 555-20-28</a></li>
+              <li><a href="mailto:hello@olimp-demo.ru">hello@olimp-demo.ru</a></li>
+              <li><a href="#contact" data-nav-target="contact">Адрес и режим работы</a></li>
+              <li><button type="button" data-booking-open>Записаться онлайн</button></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <span>© 2026 Спортивный комплекс «Олимп»</span>
+          <span>Демонстрационный сайт · данные и отзывы вымышлены</span>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      (() => {
+        const header = document.querySelector(".site-header");
+        const nav = document.querySelector("#primary-nav");
+        const toggle = document.querySelector(".menu-toggle");
+        const backdrop = document.querySelector(".nav-backdrop");
+        const navLinks = [...nav.querySelectorAll("[data-nav-target]")];
+        const scrollLinks = [...document.querySelectorAll("a[data-nav-target]")];
+        const sections = ["home", "directions", "athletes", "reviews", "symbols", "contact"]
+          .map((id) => document.getElementById(id))
+          .filter(Boolean);
+        const mobile = window.matchMedia("(max-width: 760px)");
+        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+        let menuOpen = false;
+        let scrollFrame = 0;
+
+        const setMenu = (open, restoreFocus = false) => {
+          menuOpen = mobile.matches && open;
+          header.classList.toggle("menu-open", menuOpen);
+          document.body.classList.toggle("menu-open", menuOpen);
+          toggle.setAttribute("aria-expanded", String(menuOpen));
+          toggle.setAttribute("aria-label", menuOpen ? "Закрыть меню" : "Открыть меню");
+          nav.inert = mobile.matches && !menuOpen;
+
+          if (menuOpen) {
+            window.requestAnimationFrame(() => navLinks[0]?.focus());
+          } else if (restoreFocus) {
+            toggle.focus();
+          }
+        };
+
+        const setActiveSection = (id) => {
+          navLinks.forEach((link) => {
+            const active = link.dataset.navTarget === id;
+            link.classList.toggle("is-active", active);
+            if (active) link.setAttribute("aria-current", "page");
+            else link.removeAttribute("aria-current");
+          });
+        };
+
+        const updateNavigation = () => {
+          scrollFrame = 0;
+          header.classList.toggle("is-scrolled", window.scrollY > 38);
+
+          const marker = window.scrollY + Math.min(window.innerHeight * 0.36, 340);
+          let activeSection = sections[0]?.id;
+          sections.forEach((section) => {
+            const top = section.getBoundingClientRect().top + window.scrollY;
+            if (top <= marker) activeSection = section.id;
+          });
+          setActiveSection(activeSection);
+        };
+
+        const requestNavigationUpdate = () => {
+          if (scrollFrame) return;
+          scrollFrame = window.requestAnimationFrame(updateNavigation);
+        };
+
+        scrollLinks.forEach((link) => {
+          link.addEventListener("click", (event) => {
+            if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+            const id = link.dataset.navTarget;
+            const target = document.getElementById(id);
+            if (!target) return;
+            event.preventDefault();
+            setMenu(false);
+
+            if (id === "home") {
+              window.scrollTo({ top: 0, behavior: reduceMotion.matches ? "auto" : "smooth" });
+            } else {
+              target.scrollIntoView({
+                behavior: reduceMotion.matches ? "auto" : "smooth",
+                block: "start"
+              });
+            }
+            window.history.pushState(null, "", `#${id}`);
+            setActiveSection(id);
+          });
+        });
+
+        toggle.addEventListener("click", () => setMenu(!menuOpen, menuOpen));
+        backdrop.addEventListener("click", () => setMenu(false, true));
+        document.addEventListener("keydown", (event) => {
+          if (event.key === "Escape" && menuOpen) setMenu(false, true);
+        });
+        window.addEventListener("scroll", requestNavigationUpdate, { passive: true });
+        window.addEventListener("resize", requestNavigationUpdate);
+        mobile.addEventListener("change", () => {
+          setMenu(false);
+          requestNavigationUpdate();
+        });
+
+        window.addEventListener("load", () => {
+          const id = window.location.hash.slice(1);
+          const target = document.getElementById(id);
+          if (target && id !== "home") {
+            target.scrollIntoView({ behavior: "auto", block: "start" });
+          }
+          requestNavigationUpdate();
+        });
+
+        setMenu(false);
+        updateNavigation();
+      })();
+
+      (() => {
+        const modal = document.querySelector("#booking-modal");
+        const dialog = modal.querySelector(".booking-dialog");
+        const form = document.querySelector("#booking-form");
+        const formView = modal.querySelector(".booking-form-view");
+        const successView = modal.querySelector(".booking-success");
+        const summary = document.querySelector("#booking-summary");
+        const closeButtons = [...modal.querySelectorAll("[data-booking-close]")];
+        const doneButton = modal.querySelector("[data-booking-done]");
+        const nameInput = document.querySelector("#booking-name");
+        const phoneInput = document.querySelector("#booking-phone");
+        const sportInput = document.querySelector("#booking-sport");
+        const dateInput = document.querySelector("#booking-date");
+        const timeInput = document.querySelector("#booking-time");
+        const consentInput = document.querySelector("#booking-consent");
+        const consentLabel = modal.querySelector(".booking-consent");
+        const fields = [nameInput, phoneInput, sportInput, dateInput, timeInput];
+        const pageRoots = [...document.body.children].filter((node) => node !== modal);
+        let returnFocus = null;
+        let submitted = false;
+        let touchStartY = 0;
+
+        const toDateValue = (date) => {
+          const year = date.getFullYear();
+          const month = String(date.getMonth() + 1).padStart(2, "0");
+          const day = String(date.getDate()).padStart(2, "0");
+          return `${year}-${month}-${day}`;
+        };
+
+        const today = new Date();
+        const lastBookingDay = new Date(today);
+        lastBookingDay.setDate(lastBookingDay.getDate() + 60);
+        dateInput.min = toDateValue(today);
+        dateInput.max = toDateValue(lastBookingDay);
+
+        fields.forEach((field) => {
+          const error = document.querySelector(`#${field.id}-error`);
+          if (error) field.setAttribute("aria-describedby", error.id);
+        });
+
+        const formatPhone = (value) => {
+          let digits = value.replace(/\D/g, "");
+          if (digits.startsWith("8")) digits = `7${digits.slice(1)}`;
+          if (!digits.startsWith("7")) digits = `7${digits}`;
+          digits = digits.slice(0, 11);
+          const parts = [`+${digits.slice(0, 1)}`];
+          if (digits.length > 1) parts.push(` (${digits.slice(1, 4)}`);
+          if (digits.length >= 4) parts.push(")");
+          if (digits.length > 4) parts.push(` ${digits.slice(4, 7)}`);
+          if (digits.length > 7) parts.push(`-${digits.slice(7, 9)}`);
+          if (digits.length > 9) parts.push(`-${digits.slice(9, 11)}`);
+          return parts.join("");
+        };
+
+        const setFieldError = (field, message = "") => {
+          const error = document.querySelector(`#${field.id}-error`);
+          field.setAttribute("aria-invalid", String(Boolean(message)));
+          if (error) error.textContent = message;
+        };
+
+        const validateField = (field) => {
+          let message = "";
+          if (field === nameInput && field.value.trim().length < 2) {
+            message = "Введите имя — минимум 2 символа";
+          } else if (field === phoneInput && field.value.replace(/\D/g, "").length !== 11) {
+            message = "Введите полный номер телефона";
+          } else if (field === dateInput && (!field.value || field.value < field.min || field.value > field.max)) {
+            message = "Выберите доступную дату";
+          } else if (!field.value) {
+            message = "Заполните поле";
+          }
+          setFieldError(field, message);
+          return !message;
+        };
+
+        const resetFormState = () => {
+          form.reset();
+          fields.forEach((field) => setFieldError(field));
+          consentInput.removeAttribute("aria-invalid");
+          consentLabel.classList.remove("is-invalid");
+          formView.hidden = false;
+          successView.hidden = true;
+          dialog.setAttribute("aria-labelledby", "booking-title");
+          summary.textContent = "";
+          submitted = false;
+        };
+
+        const setPageInert = (inert) => {
+          pageRoots.forEach((node) => { node.inert = inert; });
+        };
+
+        const openModal = (trigger) => {
+          if (document.body.classList.contains("menu-open")) {
+            document.querySelector(".menu-toggle")?.click();
+          }
+          if (submitted) resetFormState();
+          if (trigger.dataset.bookingSport) {
+            sportInput.value = trigger.dataset.bookingSport;
+            setFieldError(sportInput);
+          }
+          returnFocus = trigger;
+          modal.classList.add("is-open");
+          modal.setAttribute("aria-hidden", "false");
+          document.body.classList.add("booking-open");
+          setPageInert(true);
+          window.requestAnimationFrame(() => nameInput.focus());
+        };
+
+        const closeModal = () => {
+          if (!modal.classList.contains("is-open")) return;
+          modal.classList.remove("is-open");
+          modal.setAttribute("aria-hidden", "true");
+          document.body.classList.remove("booking-open");
+          setPageInert(false);
+          returnFocus?.focus();
+          if (submitted) window.setTimeout(resetFormState, 280);
+        };
+
+        document.addEventListener("click", (event) => {
+          const button = event.target.closest("[data-booking-open]");
+          if (!button) return;
+          event.preventDefault();
+          openModal(button);
+        });
+        closeButtons.forEach((button) => button.addEventListener("click", closeModal));
+        doneButton.addEventListener("click", closeModal);
+
+        phoneInput.addEventListener("input", () => {
+          phoneInput.value = formatPhone(phoneInput.value);
+          if (phoneInput.getAttribute("aria-invalid") === "true") validateField(phoneInput);
+        });
+
+        fields.forEach((field) => {
+          const eventName = field.tagName === "SELECT" || field.type === "date" ? "change" : "input";
+          field.addEventListener(eventName, () => {
+            if (field.getAttribute("aria-invalid") === "true") validateField(field);
+          });
+          field.addEventListener("blur", () => {
+            if (field.value) validateField(field);
+          });
+        });
+
+        consentInput.addEventListener("change", () => {
+          consentInput.setAttribute("aria-invalid", String(!consentInput.checked));
+          consentLabel.classList.toggle("is-invalid", !consentInput.checked);
+        });
+
+        form.addEventListener("submit", (event) => {
+          event.preventDefault();
+          const fieldsValid = fields.map(validateField).every(Boolean);
+          const consentValid = consentInput.checked;
+          consentInput.setAttribute("aria-invalid", String(!consentValid));
+          consentLabel.classList.toggle("is-invalid", !consentValid);
+
+          if (!fieldsValid || !consentValid) {
+            const firstInvalid = form.querySelector('[aria-invalid="true"]');
+            firstInvalid?.focus();
+            return;
+          }
+
+          const selectedDate = new Date(`${dateInput.value}T12:00:00`);
+          const readableDate = new Intl.DateTimeFormat("ru-RU", {
+            day: "numeric",
+            month: "long",
+            year: "numeric"
+          }).format(selectedDate);
+          summary.textContent = `${nameInput.value.trim()} · ${sportInput.value} · ${readableDate} в ${timeInput.value}`;
+          formView.hidden = true;
+          successView.hidden = false;
+          dialog.setAttribute("aria-labelledby", "booking-success-title");
+          submitted = true;
+          doneButton.focus();
+        });
+
+        modal.addEventListener("keydown", (event) => {
+          if (event.key === "Escape") {
+            event.preventDefault();
+            closeModal();
+            return;
+          }
+          if (event.key !== "Tab") return;
+
+          const focusable = [...modal.querySelectorAll("button, input, select")]
+            .filter((element) => !element.hidden && !element.disabled && element.offsetParent !== null);
+          const first = focusable[0];
+          const last = focusable[focusable.length - 1];
+          if (event.shiftKey && document.activeElement === first) {
+            event.preventDefault();
+            last.focus();
+          } else if (!event.shiftKey && document.activeElement === last) {
+            event.preventDefault();
+            first.focus();
+          }
+        });
+
+        dialog.addEventListener("pointerdown", (event) => {
+          if (event.pointerType === "touch" && event.target.closest(".booking-aside")) {
+            touchStartY = event.clientY;
+          }
+        }, { passive: true });
+
+        dialog.addEventListener("pointerup", (event) => {
+          if (event.pointerType === "touch" && touchStartY && event.clientY - touchStartY > 80) closeModal();
+          touchStartY = 0;
+        }, { passive: true });
+      })();
+
+      (() => {
+        const track = document.querySelector("#directions-track");
+        const arrows = document.querySelectorAll(".carousel-arrow");
+        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+        const originalCards = [...track.children];
+        let autoplay;
+        let resetTimer;
+
+        originalCards.forEach((card) => {
+          const clone = card.cloneNode(true);
+          clone.setAttribute("aria-hidden", "true");
+          clone.querySelectorAll("a, button").forEach((control) => control.setAttribute("tabindex", "-1"));
+          track.append(clone);
+        });
+
+        const cardStep = () => {
+          const styles = window.getComputedStyle(track);
+          return originalCards[0].getBoundingClientRect().width + Number.parseFloat(styles.columnGap || styles.gap);
+        };
+        const loopPoint = () => track.scrollWidth / 2;
+
+        const normalize = () => {
+          const midpoint = loopPoint();
+          if (track.scrollLeft >= midpoint - 2) {
+            track.style.scrollBehavior = "auto";
+            track.scrollLeft -= midpoint;
+            track.offsetHeight;
+            track.style.scrollBehavior = "";
+          }
+        };
+
+        const move = (direction) => {
+          if (direction < 0 && track.scrollLeft < cardStep() * 0.7) {
+            track.style.scrollBehavior = "auto";
+            track.scrollLeft += loopPoint();
+            track.offsetHeight;
+            track.style.scrollBehavior = "";
+          }
+          track.scrollBy({ left: cardStep() * direction, behavior: reduceMotion.matches ? "auto" : "smooth" });
+          window.clearTimeout(resetTimer);
+          resetTimer = window.setTimeout(normalize, 650);
+        };
+
+        const stop = () => window.clearInterval(autoplay);
+        const start = () => {
+          stop();
+          if (!reduceMotion.matches && !document.hidden) {
+            autoplay = window.setInterval(() => move(1), 5400);
+          }
+        };
+
+        arrows.forEach((button) => {
+          button.addEventListener("click", () => {
+            move(Number(button.dataset.direction));
+            start();
+          });
+        });
+
+        track.addEventListener("pointerenter", stop);
+        track.addEventListener("pointerleave", start);
+        track.addEventListener("focusin", stop);
+        track.addEventListener("focusout", start);
+        track.addEventListener("touchstart", stop, { passive: true });
+        track.addEventListener("touchend", start, { passive: true });
+        track.addEventListener("scroll", () => {
+          window.clearTimeout(resetTimer);
+          resetTimer = window.setTimeout(normalize, 180);
+        }, { passive: true });
+
+        document.addEventListener("visibilitychange", start);
+        reduceMotion.addEventListener("change", start);
+        start();
+      })();
+
+      (() => {
+        const stage = document.querySelector(".athlete-stage");
+        const track = document.querySelector("#athlete-slides");
+        const slides = [...document.querySelectorAll(".athlete-slide")];
+        const tabs = [...document.querySelectorAll(".athlete-tab")];
+        const dots = [...document.querySelectorAll(".athlete-dot")];
+        const count = document.querySelector("#athlete-mobile-count");
+        const mobile = window.matchMedia("(max-width: 760px)");
+        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+        let activeIndex = 0;
+        let scrollFrame;
+
+        const setActive = (index, scrollMobile = false) => {
+          activeIndex = Math.max(0, Math.min(slides.length - 1, index));
+
+          slides.forEach((slide, slideIndex) => {
+            const isActive = slideIndex === activeIndex;
+            slide.classList.toggle("is-active", isActive);
+            slide.setAttribute("aria-hidden", mobile.matches ? "false" : String(!isActive));
+          });
+
+          tabs.forEach((tab, tabIndex) => {
+            const isActive = tabIndex === activeIndex;
+            tab.classList.toggle("is-active", isActive);
+            tab.setAttribute("aria-selected", String(isActive));
+          });
+
+          dots.forEach((dot, dotIndex) => dot.classList.toggle("is-active", dotIndex === activeIndex));
+          count.textContent = `${String(activeIndex + 1).padStart(2, "0")} / ${String(slides.length).padStart(2, "0")}`;
+
+          if (scrollMobile && mobile.matches) {
+            slides[activeIndex].scrollIntoView({
+              behavior: reduceMotion.matches ? "auto" : "smooth",
+              block: "nearest",
+              inline: "center"
+            });
+          }
+        };
+
+        tabs.forEach((tab) => {
+          tab.addEventListener("click", () => setActive(Number(tab.dataset.athleteTab), true));
+        });
+
+        stage.addEventListener("keydown", (event) => {
+          if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+          event.preventDefault();
+          const direction = event.key === "ArrowRight" ? 1 : -1;
+          const nextIndex = (activeIndex + direction + slides.length) % slides.length;
+          setActive(nextIndex, true);
+        });
+
+        track.addEventListener("scroll", () => {
+          if (!mobile.matches) return;
+          window.cancelAnimationFrame(scrollFrame);
+          scrollFrame = window.requestAnimationFrame(() => {
+            const trackCenter = track.getBoundingClientRect().left + track.clientWidth / 2;
+            let closestIndex = 0;
+            let closestDistance = Infinity;
+
+            slides.forEach((slide, index) => {
+              const box = slide.getBoundingClientRect();
+              const distance = Math.abs(box.left + box.width / 2 - trackCenter);
+              if (distance < closestDistance) {
+                closestDistance = distance;
+                closestIndex = index;
+              }
+            });
+
+            if (closestIndex !== activeIndex) setActive(closestIndex);
+          });
+        }, { passive: true });
+
+        mobile.addEventListener("change", () => setActive(activeIndex));
+        setActive(0);
+      })();
+
+      (() => {
+        const track = document.querySelector("#reviews-track");
+        const cards = [...document.querySelectorAll(".review-card")];
+        const dots = [...document.querySelectorAll(".reviews-dot")];
+        const arrows = [...document.querySelectorAll(".reviews-arrow")];
+        const count = document.querySelector("#reviews-count");
+        const mobile = window.matchMedia("(max-width: 760px)");
+        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+        let activeIndex = 0;
+        let maxIndex = cards.length - 1;
+        let scrollFrame = 0;
+        let autoplay = 0;
+
+        const cardStep = () => {
+          const styles = window.getComputedStyle(track);
+          return cards[0].getBoundingClientRect().width + Number.parseFloat(styles.columnGap || styles.gap || 0);
+        };
+
+        const calculatePages = () => {
+          const visibleCards = Math.max(1, Math.round((track.clientWidth + 1) / cardStep()));
+          maxIndex = Math.max(0, cards.length - visibleCards);
+          activeIndex = Math.min(activeIndex, maxIndex);
+
+          dots.forEach((dot, index) => {
+            const available = index <= maxIndex;
+            dot.hidden = !available;
+            dot.setAttribute("aria-label", `Позиция отзывов ${index + 1} из ${maxIndex + 1}`);
+          });
+        };
+
+        const updateState = (index) => {
+          activeIndex = Math.max(0, Math.min(maxIndex, index));
+          cards.forEach((card, cardIndex) => card.classList.toggle("is-current", cardIndex === activeIndex));
+          dots.forEach((dot, dotIndex) => dot.classList.toggle("is-active", dotIndex === activeIndex));
+          count.textContent = `${String(activeIndex + 1).padStart(2, "0")} / ${String(maxIndex + 1).padStart(2, "0")}`;
+        };
+
+        const goTo = (index, behavior = "smooth") => {
+          const nextIndex = index < 0 ? maxIndex : index > maxIndex ? 0 : index;
+          updateState(nextIndex);
+          const paddingLeft = Number.parseFloat(window.getComputedStyle(track).paddingLeft || 0);
+          const left = cards[nextIndex].offsetLeft - track.offsetLeft - paddingLeft;
+          track.scrollTo({ left, behavior: reduceMotion.matches ? "auto" : behavior });
+        };
+
+        const stop = () => window.clearInterval(autoplay);
+        const start = () => {
+          stop();
+          if (!reduceMotion.matches && !mobile.matches && !document.hidden) {
+            autoplay = window.setInterval(() => goTo(activeIndex + 1), 6800);
+          }
+        };
+
+        arrows.forEach((arrow) => {
+          arrow.addEventListener("click", () => {
+            goTo(activeIndex + Number(arrow.dataset.reviewDirection));
+            start();
+          });
+        });
+
+        dots.forEach((dot) => {
+          dot.addEventListener("click", () => {
+            goTo(Number(dot.dataset.reviewIndex));
+            start();
+          });
+        });
+
+        track.addEventListener("keydown", (event) => {
+          if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+          event.preventDefault();
+          goTo(activeIndex + (event.key === "ArrowRight" ? 1 : -1));
+          start();
+        });
+
+        track.addEventListener("scroll", () => {
+          window.cancelAnimationFrame(scrollFrame);
+          scrollFrame = window.requestAnimationFrame(() => {
+            const step = cardStep();
+            const index = Math.round(track.scrollLeft / step);
+            updateState(index);
+          });
+        }, { passive: true });
+
+        track.addEventListener("pointerenter", stop);
+        track.addEventListener("pointerleave", start);
+        track.addEventListener("focusin", stop);
+        track.addEventListener("focusout", start);
+        track.addEventListener("touchstart", stop, { passive: true });
+        document.addEventListener("visibilitychange", start);
+        reduceMotion.addEventListener("change", start);
+        mobile.addEventListener("change", () => {
+          calculatePages();
+          goTo(0, "auto");
+          start();
+        });
+
+        new ResizeObserver(() => {
+          calculatePages();
+          goTo(activeIndex, "auto");
+        }).observe(track);
+
+        calculatePages();
+        updateState(0);
+        start();
+      })();
+    </script>
+    <script type="module">
+      import * as THREE from "./vendor/three.module.min.js";
+
+      const host = document.querySelector(".award-stage");
+      const canvas = document.querySelector(".award-canvas");
+
+      if (host && canvas) {
+        try {
+          const renderer = new THREE.WebGLRenderer({
+            canvas,
+            alpha: true,
+            antialias: window.devicePixelRatio < 2
+          });
+
+          renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.75));
+          renderer.outputColorSpace = THREE.SRGBColorSpace;
+          renderer.toneMapping = THREE.ACESFilmicToneMapping;
+          renderer.toneMappingExposure = 1.18;
+          renderer.shadowMap.enabled = true;
+          renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+          const scene = new THREE.Scene();
+          const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 100);
+          const composition = new THREE.Group();
+          scene.add(composition);
+
+          const gold = new THREE.MeshStandardMaterial({
+            color: 0xe0ad48,
+            metalness: 0.58,
+            roughness: 0.24
+          });
+          const goldLight = new THREE.MeshStandardMaterial({
+            color: 0xf2cc70,
+            metalness: 0.52,
+            roughness: 0.2
+          });
+          const goldDark = new THREE.MeshStandardMaterial({
+            color: 0x8c5718,
+            metalness: 0.55,
+            roughness: 0.27
+          });
+          const red = new THREE.MeshStandardMaterial({
+            color: 0xb92531,
+            roughness: 0.45,
+            metalness: 0.12
+          });
+
+          const shadowMesh = (mesh) => {
+            mesh.castShadow = true;
+            mesh.receiveShadow = true;
+            return mesh;
+          };
+
+          const createCup = () => {
+            const cup = new THREE.Group();
+            const profile = [
+              new THREE.Vector2(0.34, -1.15),
+              new THREE.Vector2(0.74, -0.9),
+              new THREE.Vector2(1.14, -0.42),
+              new THREE.Vector2(1.48, 0.45),
+              new THREE.Vector2(1.58, 1.08),
+              new THREE.Vector2(1.52, 1.26)
+            ];
+            const bowl = shadowMesh(new THREE.Mesh(new THREE.LatheGeometry(profile, 64), gold));
+            cup.add(bowl);
+
+            const rim = shadowMesh(new THREE.Mesh(new THREE.TorusGeometry(1.53, 0.1, 18, 72), goldLight));
+            rim.rotation.x = Math.PI / 2;
+            rim.position.y = 1.25;
+            cup.add(rim);
+
+            const inside = new THREE.Mesh(
+              new THREE.CircleGeometry(1.43, 64),
+              new THREE.MeshStandardMaterial({ color: 0x4f2e0b, metalness: 0.72, roughness: 0.3 })
+            );
+            inside.rotation.x = -Math.PI / 2;
+            inside.position.y = 1.22;
+            cup.add(inside);
+
+            [-1, 1].forEach((side) => {
+              const handleCurve = new THREE.CubicBezierCurve3(
+                new THREE.Vector3(side * 1.32, 0.98, 0),
+                new THREE.Vector3(side * 2.08, 1.62, 0),
+                new THREE.Vector3(side * 2.12, 0.36, 0),
+                new THREE.Vector3(side * 1.27, -0.08, 0)
+              );
+              const handle = shadowMesh(new THREE.Mesh(new THREE.TubeGeometry(handleCurve, 54, 0.13, 16, false), gold));
+              cup.add(handle);
+            });
+
+            const stem = shadowMesh(new THREE.Mesh(new THREE.CylinderGeometry(0.26, 0.38, 1.18, 40), goldDark));
+            stem.position.y = -1.65;
+            cup.add(stem);
+
+            const shoulder = shadowMesh(new THREE.Mesh(new THREE.CylinderGeometry(0.72, 0.94, 0.32, 48), gold));
+            shoulder.position.y = -2.23;
+            cup.add(shoulder);
+
+            const base = shadowMesh(new THREE.Mesh(new THREE.CylinderGeometry(1.1, 1.34, 0.48, 48), goldDark));
+            base.position.y = -2.61;
+            cup.add(base);
+
+            const plaque = shadowMesh(new THREE.Mesh(new THREE.BoxGeometry(1.48, 0.24, 0.08), goldLight));
+            plaque.position.set(0, -2.61, 1.18);
+            cup.add(plaque);
+
+            cup.position.set(-1.55, -0.18, 0.3);
+            cup.rotation.y = -0.2;
+            cup.scale.setScalar(0.9);
+            return cup;
+          };
+
+          const createMedal = () => {
+            const medal = new THREE.Group();
+            const disc = shadowMesh(new THREE.Mesh(new THREE.CylinderGeometry(0.95, 0.95, 0.24, 64), gold));
+            disc.rotation.x = Math.PI / 2;
+            medal.add(disc);
+
+            const rim = shadowMesh(new THREE.Mesh(new THREE.TorusGeometry(0.81, 0.07, 16, 64), goldLight));
+            rim.position.z = 0.14;
+            medal.add(rim);
+
+            const oneShape = new THREE.Shape();
+            oneShape.moveTo(-0.34, -0.56);
+            oneShape.lineTo(0.36, -0.56);
+            oneShape.lineTo(0.36, -0.39);
+            oneShape.lineTo(0.16, -0.39);
+            oneShape.lineTo(0.16, 0.56);
+            oneShape.lineTo(-0.08, 0.56);
+            oneShape.lineTo(-0.38, 0.29);
+            oneShape.lineTo(-0.23, 0.1);
+            oneShape.lineTo(-0.09, 0.22);
+            oneShape.lineTo(-0.09, -0.39);
+            oneShape.lineTo(-0.34, -0.39);
+            oneShape.closePath();
+            const one = shadowMesh(new THREE.Mesh(
+              new THREE.ExtrudeGeometry(oneShape, {
+                depth: 0.12,
+                bevelEnabled: true,
+                bevelSegments: 2,
+                bevelSize: 0.025,
+                bevelThickness: 0.025
+              }),
+              goldDark
+            ));
+            one.position.z = 0.15;
+            one.scale.setScalar(0.88);
+            medal.add(one);
+
+            [-1, 1].forEach((side) => {
+              const ribbon = shadowMesh(new THREE.Mesh(new THREE.BoxGeometry(0.34, 1.7, 0.12), red));
+              ribbon.position.set(side * 0.25, 1.65, -0.04);
+              ribbon.rotation.z = side * -0.18;
+              medal.add(ribbon);
+            });
+
+            medal.position.set(1.2, -1.72, 1.05);
+            medal.rotation.set(-0.07, -0.22, -0.12);
+            medal.scale.setScalar(0.9);
+            return medal;
+          };
+
+          const createCertificateTexture = () => {
+            const textureCanvas = document.createElement("canvas");
+            textureCanvas.width = 768;
+            textureCanvas.height = 960;
+            const context = textureCanvas.getContext("2d");
+            context.fillStyle = "#f7f0df";
+            context.fillRect(0, 0, textureCanvas.width, textureCanvas.height);
+            context.strokeStyle = "#bf8b35";
+            context.lineWidth = 8;
+            context.strokeRect(34, 34, 700, 892);
+            context.strokeStyle = "rgba(191,139,53,.48)";
+            context.lineWidth = 2;
+            context.strokeRect(54, 54, 660, 852);
+            context.fillStyle = "#ad7b2e";
+            context.font = "700 25px Arial";
+            context.fillText("СПОРТИВНЫЙ КОМПЛЕКС", 92, 145);
+            context.fillStyle = "#102238";
+            context.font = "800 72px Arial";
+            context.fillText("ГРАМОТА", 92, 270);
+            context.fillText("ОЛИМП", 92, 345);
+            context.fillStyle = "rgba(16,34,56,.35)";
+            context.fillRect(92, 680, 520, 3);
+            context.fillRect(92, 730, 390, 3);
+            context.strokeStyle = "#bf8b35";
+            context.lineWidth = 8;
+            context.beginPath();
+            context.arc(610, 765, 58, 0, Math.PI * 2);
+            context.stroke();
+            const texture = new THREE.CanvasTexture(textureCanvas);
+            texture.colorSpace = THREE.SRGBColorSpace;
+            texture.anisotropy = Math.min(renderer.capabilities.getMaxAnisotropy(), 8);
+            return texture;
+          };
+
+          const createCertificate = () => {
+            const certificate = new THREE.Group();
+            const paper = shadowMesh(new THREE.Mesh(
+              new THREE.BoxGeometry(2.35, 2.95, 0.09),
+              [
+                new THREE.MeshStandardMaterial({ color: 0xd8c9aa, roughness: 0.64 }),
+                new THREE.MeshStandardMaterial({ color: 0xd8c9aa, roughness: 0.64 }),
+                new THREE.MeshStandardMaterial({ color: 0xd8c9aa, roughness: 0.64 }),
+                new THREE.MeshStandardMaterial({ color: 0xd8c9aa, roughness: 0.64 }),
+                new THREE.MeshStandardMaterial({ map: createCertificateTexture(), roughness: 0.6 }),
+                new THREE.MeshStandardMaterial({ color: 0xe6dbc4, roughness: 0.6 })
+              ]
+            ));
+            certificate.add(paper);
+
+            const frameMaterial = goldLight;
+            const framePieces = [
+              [2.24, 0.05, 0.06, 0, 1.4],
+              [2.24, 0.05, 0.06, 0, -1.4],
+              [0.05, 2.84, 0.06, -1.06, 0],
+              [0.05, 2.84, 0.06, 1.06, 0]
+            ];
+            framePieces.forEach(([width, height, depth, x, y]) => {
+              const piece = shadowMesh(new THREE.Mesh(new THREE.BoxGeometry(width, height, depth), frameMaterial));
+              piece.position.set(x, y, 0.08);
+              certificate.add(piece);
+            });
+
+            certificate.position.set(2.18, 1.12, -0.15);
+            certificate.rotation.set(-0.04, -0.36, -0.1);
+            certificate.scale.setScalar(0.88);
+            return certificate;
+          };
+
+          const createRings = () => {
+            const rings = new THREE.Group();
+            const data = [
+              [-1.7, 0.36, 0x3f88c5],
+              [0, 0.36, 0xd2b63d],
+              [1.7, 0.36, 0x648151],
+              [-0.85, -0.48, 0x24272b],
+              [0.85, -0.48, 0xc73d43]
+            ];
+            data.forEach(([x, y, color]) => {
+              const material = new THREE.MeshStandardMaterial({
+                color,
+                metalness: 0.58,
+                roughness: 0.28,
+                emissive: color,
+                emissiveIntensity: color === 0x24272b ? 0.08 : 0.035
+              });
+              const ring = shadowMesh(new THREE.Mesh(new THREE.TorusGeometry(0.72, 0.115, 20, 72), material));
+              ring.position.set(x, y, 0);
+              rings.add(ring);
+            });
+            rings.position.set(0.85, 1.78, -2.15);
+            rings.rotation.set(-0.04, -0.12, 0);
+            rings.scale.setScalar(0.86);
+            return rings;
+          };
+
+          const ringsModel = createRings();
+          const certificateModel = createCertificate();
+          const cupModel = createCup();
+          const medalModel = createMedal();
+          composition.add(ringsModel, certificateModel, cupModel, medalModel);
+
+          const particlePositions = new Float32Array(210);
+          for (let index = 0; index < particlePositions.length / 3; index += 1) {
+            particlePositions[index * 3] = Math.sin(index * 12.73) * 4.4;
+            particlePositions[index * 3 + 1] = Math.cos(index * 7.91) * 3.2;
+            particlePositions[index * 3 + 2] = -2.4 - Math.abs(Math.sin(index * 4.37)) * 2.4;
+          }
+          const particleGeometry = new THREE.BufferGeometry();
+          particleGeometry.setAttribute("position", new THREE.BufferAttribute(particlePositions, 3));
+          const particles = new THREE.Points(
+            particleGeometry,
+            new THREE.PointsMaterial({
+              color: 0xe9c477,
+              size: 0.025,
+              transparent: true,
+              opacity: 0.34,
+              depthWrite: false
+            })
+          );
+          scene.add(particles);
+
+          const ambient = new THREE.HemisphereLight(0xc9dfff, 0x291509, 0.86);
+          scene.add(ambient);
+
+          const key = new THREE.DirectionalLight(0xffdb87, 4.8);
+          key.position.set(-3.5, 6.5, 7);
+          key.castShadow = true;
+          key.shadow.mapSize.set(1024, 1024);
+          key.shadow.bias = -0.0005;
+          key.shadow.radius = 5;
+          scene.add(key);
+
+          const redLight = new THREE.PointLight(0xd52d35, 21, 12, 2);
+          redLight.position.set(1.8, -0.55, 3.1);
+          scene.add(redLight);
+
+          const coolLight = new THREE.PointLight(0x6baee0, 14, 13, 2);
+          coolLight.position.set(-3.7, 3.1, 1.2);
+          scene.add(coolLight);
+
+          const frontLight = new THREE.PointLight(0xffe3a5, 13, 18, 2);
+          frontLight.position.set(0.5, 2.2, 8);
+          scene.add(frontLight);
+
+          const rimLight = new THREE.DirectionalLight(0x8ac5ee, 2.8);
+          rimLight.position.set(3.5, 4.5, -5);
+          scene.add(rimLight);
+
+          const focusLight = new THREE.PointLight(0xffd37a, 0, 7, 2);
+          focusLight.position.set(0, 0, 4);
+          scene.add(focusLight);
+
+          const platform = new THREE.Mesh(
+            new THREE.CircleGeometry(5.2, 72),
+            new THREE.MeshPhysicalMaterial({
+              color: 0x08131f,
+              metalness: 0.38,
+              roughness: 0.32,
+              clearcoat: 0.45,
+              clearcoatRoughness: 0.38,
+              transparent: true,
+              opacity: 0.66
+            })
+          );
+          platform.rotation.x = -Math.PI / 2;
+          platform.position.y = -3.07;
+          platform.receiveShadow = true;
+          scene.add(platform);
+
+          const floor = new THREE.Mesh(
+            new THREE.PlaneGeometry(13, 8),
+            new THREE.ShadowMaterial({ color: 0x000000, opacity: 0.36 })
+          );
+          floor.rotation.x = -Math.PI / 2;
+          floor.position.y = -3.05;
+          floor.receiveShadow = true;
+          scene.add(floor);
+
+          const symbolsSection = host.closest(".symbols");
+          const stageCounter = host.querySelector(".stage-axis");
+          const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+          const mobileMotion = window.matchMedia("(max-width: 760px)");
+          const motionItems = [
+            {
+              model: ringsModel,
+              start: 0,
+              end: 0.24,
+              offset: new THREE.Vector3(0, 0.8, -3.2),
+              rotation: new THREE.Euler(0.28, -0.35, -0.32)
+            },
+            {
+              model: cupModel,
+              start: 0.17,
+              end: 0.49,
+              offset: new THREE.Vector3(-1.25, -2.6, 1.4),
+              rotation: new THREE.Euler(0.12, -0.52, -0.24)
+            },
+            {
+              model: medalModel,
+              start: 0.43,
+              end: 0.73,
+              offset: new THREE.Vector3(1.35, -2.2, 2.4),
+              rotation: new THREE.Euler(-0.3, 0.58, 0.7)
+            },
+            {
+              model: certificateModel,
+              start: 0.68,
+              end: 0.96,
+              offset: new THREE.Vector3(2.2, 1.4, -2.1),
+              rotation: new THREE.Euler(-0.22, -0.68, 0.22)
+            }
+          ].map((item) => ({
+            ...item,
+            basePosition: item.model.position.clone(),
+            baseRotation: item.model.rotation.clone(),
+            baseScale: item.model.scale.clone()
+          }));
+          const stageFocus = host.querySelector(".stage-focus");
+          const symbolLabels = [...symbolsSection.querySelectorAll(".symbols-list li")];
+          const interactiveItems = [
+            { model: cupModel, label: "Кубок", listIndex: 0, amount: 0, target: 0 },
+            { model: medalModel, label: "Медаль", listIndex: 1, amount: 0, target: 0 },
+            { model: certificateModel, label: "Грамота", listIndex: 2, amount: 0, target: 0 },
+            { model: ringsModel, label: "Кольца", listIndex: 3, amount: 0, target: 0 }
+          ];
+          const raycaster = new THREE.Raycaster();
+          const pointerNdc = new THREE.Vector2();
+          const pointerTarget = new THREE.Vector2();
+          const pointerCurrent = new THREE.Vector2();
+          let activeItem = null;
+          let interactionFrame = 0;
+          let tapReleaseTimer = 0;
+          let sceneProgress = reducedMotion.matches ? 1 : 0;
+          let scrollFrame = 0;
+
+          const clamp = (value, minimum = 0, maximum = 1) => Math.min(maximum, Math.max(minimum, value));
+          const easeOutCubic = (value) => 1 - Math.pow(1 - value, 3);
+
+          const defaultFocusText = () => mobileMotion.matches ? "Коснитесь объекта" : "Наведите на объект";
+
+          const setActiveItem = (item) => {
+            if (activeItem === item) return;
+            activeItem = item;
+            interactiveItems.forEach((candidate) => {
+              candidate.target = candidate === activeItem ? 1 : 0;
+            });
+            symbolLabels.forEach((label, index) => {
+              label.classList.toggle("is-active", index === activeItem?.listIndex);
+            });
+            host.classList.toggle("is-object-hovered", Boolean(activeItem));
+            stageFocus.textContent = activeItem ? `Фокус · ${activeItem.label}` : defaultFocusText();
+          };
+
+          const resolveInteractiveItem = (object) => {
+            let node = object;
+            while (node && node !== scene) {
+              const item = interactiveItems.find((candidate) => candidate.model === node);
+              if (item) return item;
+              node = node.parent;
+            }
+            return null;
+          };
+
+          const pickInteractiveItem = (clientX, clientY) => {
+            const bounds = canvas.getBoundingClientRect();
+            if (!bounds.width || !bounds.height) return null;
+            pointerNdc.set(
+              ((clientX - bounds.left) / bounds.width) * 2 - 1,
+              -((clientY - bounds.top) / bounds.height) * 2 + 1
+            );
+            scene.updateMatrixWorld(true);
+            raycaster.setFromCamera(pointerNdc, camera);
+            const hit = raycaster.intersectObjects(interactiveItems.map((item) => item.model), true)[0];
+            return hit ? resolveInteractiveItem(hit.object) : null;
+          };
+
+          const applyInteractionPose = () => {
+            composition.rotation.x = pointerCurrent.y * 0.035;
+            composition.rotation.y = pointerCurrent.x * 0.075;
+
+            let strongestItem = null;
+            interactiveItems.forEach((item) => {
+              item.model.scale.multiplyScalar(1 + item.amount * 0.045);
+              item.model.position.y += item.amount * 0.12;
+              item.model.rotation.y += pointerCurrent.x * 0.018;
+              if (!strongestItem || item.amount > strongestItem.amount) strongestItem = item;
+            });
+
+            const focusAmount = strongestItem?.amount || 0;
+            focusLight.intensity = focusAmount * 11;
+            if (strongestItem && focusAmount > 0.001) {
+              focusLight.position.copy(strongestItem.model.position);
+              focusLight.position.z += 3;
+            }
+          };
+
+          const drawScene = () => {
+            applySceneProgress(sceneProgress, false);
+            applyInteractionPose();
+            renderer.render(scene, camera);
+          };
+
+          const requestInteractionUpdate = () => {
+            if (interactionFrame || reducedMotion.matches) return;
+            interactionFrame = window.requestAnimationFrame(() => {
+              interactionFrame = 0;
+              let moving = false;
+              pointerCurrent.x += (pointerTarget.x - pointerCurrent.x) * 0.14;
+              pointerCurrent.y += (pointerTarget.y - pointerCurrent.y) * 0.14;
+              moving ||= Math.abs(pointerTarget.x - pointerCurrent.x) > 0.001;
+              moving ||= Math.abs(pointerTarget.y - pointerCurrent.y) > 0.001;
+
+              interactiveItems.forEach((item) => {
+                item.amount += (item.target - item.amount) * 0.16;
+                moving ||= Math.abs(item.target - item.amount) > 0.002;
+              });
+
+              drawScene();
+              if (moving) requestInteractionUpdate();
+            });
+          };
+
+          const resetInteraction = () => {
+            window.clearTimeout(tapReleaseTimer);
+            pointerTarget.set(0, 0);
+            setActiveItem(null);
+            interactiveItems.forEach((item) => {
+              item.amount = 0;
+              item.target = 0;
+            });
+            pointerCurrent.set(0, 0);
+            focusLight.intensity = 0;
+            host.classList.toggle("is-interactive", !reducedMotion.matches);
+            stageFocus.textContent = reducedMotion.matches ? "Статичная композиция" : defaultFocusText();
+          };
+
+          const handlePointerMove = (event) => {
+            if (reducedMotion.matches || event.pointerType === "touch") return;
+            const bounds = canvas.getBoundingClientRect();
+            pointerTarget.set(
+              clamp((event.clientX - bounds.left) / bounds.width, 0, 1) * 2 - 1,
+              (clamp((event.clientY - bounds.top) / bounds.height, 0, 1) * 2 - 1) * -1
+            );
+            setActiveItem(pickInteractiveItem(event.clientX, event.clientY));
+            requestInteractionUpdate();
+          };
+
+          const handlePointerLeave = (event) => {
+            if (reducedMotion.matches || event.pointerType === "touch") return;
+            pointerTarget.set(0, 0);
+            setActiveItem(null);
+            requestInteractionUpdate();
+          };
+
+          const handlePointerDown = (event) => {
+            if (reducedMotion.matches || event.pointerType !== "touch") return;
+            const item = pickInteractiveItem(event.clientX, event.clientY);
+            if (!item) return;
+            window.clearTimeout(tapReleaseTimer);
+            setActiveItem(item);
+            requestInteractionUpdate();
+            tapReleaseTimer = window.setTimeout(() => {
+              setActiveItem(null);
+              requestInteractionUpdate();
+            }, 1600);
+          };
+
+          const applySceneProgress = (progress, shouldDraw = true) => {
+            sceneProgress = clamp(progress);
+
+            motionItems.forEach((item) => {
+              const phase = clamp((sceneProgress - item.start) / (item.end - item.start));
+              const eased = easeOutCubic(phase);
+              item.model.visible = phase > 0.002 || reducedMotion.matches;
+              item.model.position.copy(item.basePosition).addScaledVector(item.offset, 1 - eased);
+              item.model.rotation.set(
+                item.baseRotation.x + item.rotation.x * (1 - eased),
+                item.baseRotation.y + item.rotation.y * (1 - eased),
+                item.baseRotation.z + item.rotation.z * (1 - eased)
+              );
+              item.model.scale.set(
+                item.baseScale.x * THREE.MathUtils.lerp(0.12, 1, eased),
+                item.baseScale.y * THREE.MathUtils.lerp(0.12, 1, eased),
+                item.baseScale.z * THREE.MathUtils.lerp(0.12, 1, eased)
+              );
+            });
+
+            particles.material.opacity = THREE.MathUtils.lerp(0.1, 0.34, sceneProgress);
+            platform.material.opacity = THREE.MathUtils.lerp(0.35, 0.66, sceneProgress);
+            redLight.intensity = THREE.MathUtils.lerp(8, 21, clamp((sceneProgress - 0.38) / 0.35));
+            stageCounter.textContent = `${String(Math.min(4, Math.max(1, Math.ceil(sceneProgress * 4)))).padStart(2, "0")} / 04`;
+
+            if (shouldDraw) drawScene();
+          };
+
+          const render = () => {
+            const width = host.clientWidth;
+            const height = host.clientHeight;
+            const aspect = width / height;
+            renderer.setSize(width, height, false);
+            camera.aspect = aspect;
+            camera.position.set(aspect < 0.82 ? 0.12 : 0, 0.05, aspect < 0.82 ? 14.2 : 11.3);
+            composition.scale.setScalar(aspect < 0.82 ? 0.76 : 1);
+            composition.position.y = aspect < 0.82 ? 0.15 : 0;
+            camera.lookAt(0, -0.08, 0);
+            camera.updateProjectionMatrix();
+            drawScene();
+          };
+
+          const updateScrollProgress = () => {
+            if (reducedMotion.matches) {
+              applySceneProgress(1);
+              return;
+            }
+
+            const box = symbolsSection.getBoundingClientRect();
+            let progress;
+            if (mobileMotion.matches) {
+              const startLine = window.innerHeight * 0.8;
+              const travel = Math.max(box.height - window.innerHeight * 0.18, 1);
+              progress = (startLine - box.top) / travel;
+            } else {
+              const travel = Math.max(box.height - window.innerHeight, 1);
+              progress = -box.top / travel;
+            }
+            applySceneProgress(progress);
+          };
+
+          const requestScrollUpdate = () => {
+            if (scrollFrame) return;
+            scrollFrame = window.requestAnimationFrame(() => {
+              scrollFrame = 0;
+              updateScrollProgress();
+            });
+          };
+
+          if (!reducedMotion.matches) symbolsSection.classList.add("has-scroll-motion");
+          host.addEventListener("pointermove", handlePointerMove, { passive: true });
+          host.addEventListener("pointerleave", handlePointerLeave);
+          host.addEventListener("pointerdown", handlePointerDown, { passive: true });
+          window.addEventListener("scroll", requestScrollUpdate, { passive: true });
+          window.addEventListener("resize", requestScrollUpdate);
+          reducedMotion.addEventListener("change", () => {
+            symbolsSection.classList.toggle("has-scroll-motion", !reducedMotion.matches);
+            sceneProgress = reducedMotion.matches ? 1 : sceneProgress;
+            resetInteraction();
+            render();
+            updateScrollProgress();
+          });
+          mobileMotion.addEventListener("change", () => {
+            resetInteraction();
+            render();
+          });
+
+          new ResizeObserver(() => {
+            render();
+            requestScrollUpdate();
+          }).observe(host);
+          resetInteraction();
+          render();
+          updateScrollProgress();
+          host.classList.add("is-three-ready");
+        } catch (error) {
+          console.warn("3D-сцена недоступна, используется статичная композиция.", error);
+        }
+      }
+    </script>
+  </body>
+</html>
