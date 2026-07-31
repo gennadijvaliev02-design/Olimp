@@ -3327,7 +3327,7 @@
           <h2 id="symbols-title">Символы<br />победы</h2>
           <p class="symbols-description">Четыре символа большого спорта. Прокрутка, стрелки и свайп переводят камеру от одного героя к следующему.</p>
           <ul class="symbols-list" aria-label="Объекты композиции">
-            <li class="is-active">Кольца</li>
+            <li class="is-active">Олимпийский огонь</li>
             <li>Кубок</li>
             <li>Медаль</li>
             <li>Грамота</li>
@@ -3336,12 +3336,12 @@
         </div>
 
         <div class="award-stage" aria-label="Композиция спортивных наград">
-          <canvas class="award-canvas" aria-label="Трёхмерная композиция: кубок, медаль, грамота и олимпийские кольца"></canvas>
+          <canvas class="award-canvas" aria-label="Трёхмерная композиция: олимпийский факел, кубок, медаль и грамота"></canvas>
           <span class="stage-label">Олимп · коллекция достижений</span>
           <span class="stage-product" aria-live="polite">
             <span class="stage-product-index">Символ 01</span>
-            <strong class="stage-product-title">Олимпийские кольца</strong>
-            <span class="stage-product-description">Единство, движение и характер большого спорта.</span>
+            <strong class="stage-product-title">Олимпийский огонь</strong>
+            <span class="stage-product-description">Огонь, который передаёт энергию спорта от поколения к поколению.</span>
           </span>
           <span class="stage-focus">Двигайте мышью · листайте</span>
           <span class="stage-axis">01 / 04</span>
@@ -3350,12 +3350,15 @@
             <button class="stage-arrow" type="button" data-symbol-direction="-1" aria-label="Предыдущий символ">←</button>
             <button class="stage-arrow" type="button" data-symbol-direction="1" aria-label="Следующий символ">→</button>
           </span>
-          <svg class="rings-art" viewBox="0 0 620 290" aria-hidden="true">
-            <circle cx="165" cy="110" r="73" fill="none" stroke="#4b8ec7" stroke-width="17" />
-            <circle cx="312" cy="110" r="73" fill="none" stroke="#d7bc3c" stroke-width="17" />
-            <circle cx="459" cy="110" r="73" fill="none" stroke="#6b8956" stroke-width="17" />
-            <circle cx="238" cy="185" r="73" fill="none" stroke="#222222" stroke-width="17" />
-            <circle cx="386" cy="185" r="73" fill="none" stroke="#ca4043" stroke-width="17" />
+          <svg class="rings-art" viewBox="0 0 620 500" aria-hidden="true">
+            <defs>
+              <linearGradient id="torch-gold" x1="0" x2="1"><stop stop-color="#8a5517"/><stop offset=".48" stop-color="#f4d06f"/><stop offset="1" stop-color="#a36b21"/></linearGradient>
+              <linearGradient id="torch-fire" x1="0" y1="1" x2=".2" y2="0"><stop stop-color="#ffbd31"/><stop offset=".55" stop-color="#f14a2e"/><stop offset="1" stop-color="#ffdf68"/></linearGradient>
+            </defs>
+            <path d="M286 405h48l-10-218h-28z" fill="url(#torch-gold)"/>
+            <path d="M244 181c22 38 110 38 132 0l-18-25h-96z" fill="url(#torch-gold)"/>
+            <ellipse cx="310" cy="156" rx="52" ry="15" fill="#6d3b0d" stroke="#e6bb57" stroke-width="8"/>
+            <path d="M310 151c-52-35-26-82 4-115 0 31 28 38 24 75 19-13 25-34 20-54 47 57 12 103-48 94z" fill="url(#torch-fire)"/>
           </svg>
 
           <div class="certificate-art" aria-label="Грамота">
@@ -4297,86 +4300,117 @@
             return certificate;
           };
 
-          const createRings = () => {
-            const rings = new THREE.Group();
-            const data = [
-              [-1.62, 0.42, 0x2387c9],
-              [0, 0.42, 0x171a1f],
-              [1.62, 0.42, 0xd83b42],
-              [-0.81, -0.48, 0xe4b52f],
-              [0.81, -0.48, 0x4f9352]
+          const createTorch = () => {
+            const torch = new THREE.Group();
+            const torchGold = new THREE.MeshPhysicalMaterial({
+              color: 0xd8a43f,
+              metalness: 0.68,
+              roughness: 0.22,
+              clearcoat: 0.5,
+              clearcoatRoughness: 0.2
+            });
+            const torchDark = new THREE.MeshStandardMaterial({ color: 0x75420d, metalness: 0.7, roughness: 0.28 });
+
+            const handle = shadowMesh(new THREE.Mesh(new THREE.CylinderGeometry(0.2, 0.37, 3.2, 48), torchGold));
+            handle.position.y = -1.15;
+            torch.add(handle);
+
+            const grip = shadowMesh(new THREE.Mesh(new THREE.CylinderGeometry(0.3, 0.42, 1.15, 48), torchDark));
+            grip.position.y = -1.55;
+            torch.add(grip);
+            [-2.05, -1.7, -1.35, -1].forEach((y) => {
+              const band = shadowMesh(new THREE.Mesh(new THREE.TorusGeometry(0.34, 0.045, 14, 48), torchGold));
+              band.rotation.x = Math.PI / 2;
+              band.position.y = y;
+              torch.add(band);
+            });
+
+            const base = shadowMesh(new THREE.Mesh(new THREE.CylinderGeometry(0.46, 0.58, 0.34, 48), torchDark));
+            base.position.y = -2.82;
+            torch.add(base);
+
+            const collar = shadowMesh(new THREE.Mesh(new THREE.CylinderGeometry(0.72, 0.28, 0.5, 48), torchGold));
+            collar.position.y = 0.55;
+            torch.add(collar);
+
+            const burnerProfile = [
+              new THREE.Vector2(0.34, -0.18),
+              new THREE.Vector2(0.68, -0.04),
+              new THREE.Vector2(1.02, 0.3),
+              new THREE.Vector2(1.12, 0.56),
+              new THREE.Vector2(1.06, 0.7)
             ];
-            const radius = 0.88;
-            const materials = data.map(([, , color]) => new THREE.MeshStandardMaterial({
-              color,
-              metalness: 0.54,
-              roughness: 0.25,
-              emissive: color,
-              emissiveIntensity: color === 0x171a1f ? 0.075 : 0.025
-            }));
+            const burner = shadowMesh(new THREE.Mesh(new THREE.LatheGeometry(burnerProfile, 64), torchGold));
+            burner.position.y = 0.92;
+            torch.add(burner);
 
-            data.forEach(([x, y], index) => {
-              const ring = shadowMesh(new THREE.Mesh(new THREE.TorusGeometry(radius, 0.12, 24, 96), materials[index]));
-              ring.position.set(x, y, 0);
-              rings.add(ring);
-            });
-
-            const intersections = (first, second) => {
-              const dx = second[0] - first[0];
-              const dy = second[1] - first[1];
-              const distance = Math.hypot(dx, dy);
-              const midpointX = (first[0] + second[0]) / 2;
-              const midpointY = (first[1] + second[1]) / 2;
-              const height = Math.sqrt(Math.max(0, radius * radius - (distance * distance) / 4));
-              const perpendicularX = -dy / distance;
-              const perpendicularY = dx / distance;
-              return [
-                [midpointX + perpendicularX * height, midpointY + perpendicularY * height],
-                [midpointX - perpendicularX * height, midpointY - perpendicularY * height]
-              ].sort((a, b) => b[1] - a[1]);
-            };
-            const addBridge = (ringIndex, point) => {
-              const [x, y] = data[ringIndex];
-              const angle = Math.atan2(point[1] - y, point[0] - x);
-              const arc = 0.54;
-              const bridgeMaterial = materials[ringIndex].clone();
-              bridgeMaterial.depthTest = false;
-              bridgeMaterial.depthWrite = false;
-              const bridge = new THREE.Mesh(new THREE.TorusGeometry(radius, 0.12, 24, 36, arc), bridgeMaterial);
-              bridge.position.set(x, y, 0);
-              bridge.rotation.z = angle - arc / 2;
-              bridge.renderOrder = 20;
-              rings.add(bridge);
-            };
-
-            [
-              [0, 3],
-              [1, 3],
-              [1, 4],
-              [2, 4]
-            ].forEach(([first, second], pairIndex) => {
-              const points = intersections(data[first], data[second]);
-              addBridge(pairIndex % 2 === 0 ? first : second, points[0]);
-              addBridge(pairIndex % 2 === 0 ? second : first, points[1]);
-            });
-
-            const halo = new THREE.Mesh(
-              new THREE.RingGeometry(2.35, 2.39, 96),
-              new THREE.MeshStandardMaterial({
-                color: 0xd7b15a,
-                emissive: 0xd7b15a,
-                emissiveIntensity: 0.3,
-                transparent: true,
-                opacity: 0.07,
-                side: THREE.DoubleSide
-              })
+            const burnerRim = shadowMesh(new THREE.Mesh(new THREE.TorusGeometry(1.07, 0.1, 18, 72), goldLight));
+            burnerRim.rotation.x = Math.PI / 2;
+            burnerRim.position.y = 1.61;
+            torch.add(burnerRim);
+            const burnerInside = new THREE.Mesh(
+              new THREE.CircleGeometry(0.98, 64),
+              new THREE.MeshStandardMaterial({ color: 0x351304, metalness: 0.3, roughness: 0.48 })
             );
-            halo.position.z = -0.35;
-            rings.add(halo);
-            return rings;
+            burnerInside.rotation.x = -Math.PI / 2;
+            burnerInside.position.y = 1.57;
+            torch.add(burnerInside);
+
+            const flameShape = new THREE.Shape();
+            flameShape.moveTo(0, -0.42);
+            flameShape.bezierCurveTo(-0.72, -0.08, -0.7, 0.72, -0.2, 1.2);
+            flameShape.bezierCurveTo(0.05, 1.55, -0.05, 2.02, 0.08, 2.55);
+            flameShape.bezierCurveTo(0.72, 1.68, 0.8, 0.76, 0.43, 0.18);
+            flameShape.bezierCurveTo(0.28, -0.17, 0.18, -0.36, 0, -0.42);
+            flameShape.closePath();
+            const flameGeometry = new THREE.ExtrudeGeometry(flameShape, {
+              depth: 0.3,
+              bevelEnabled: true,
+              bevelSegments: 4,
+              bevelSize: 0.09,
+              bevelThickness: 0.09,
+              curveSegments: 28
+            });
+            flameGeometry.translate(0, 0, -0.15);
+
+            const flameGroup = new THREE.Group();
+            flameGroup.position.y = 1.84;
+            const outerFlame = new THREE.Mesh(flameGeometry, new THREE.MeshPhysicalMaterial({
+              color: 0xf34b21,
+              emissive: 0xff2f0d,
+              emissiveIntensity: 2.3,
+              roughness: 0.3,
+              transparent: true,
+              opacity: 0.9,
+              clearcoat: 0.32
+            }));
+            outerFlame.userData.baseScale = new THREE.Vector3(1, 1, 1);
+            flameGroup.add(outerFlame);
+
+            const innerFlame = new THREE.Mesh(flameGeometry, new THREE.MeshPhysicalMaterial({
+              color: 0xffdd67,
+              emissive: 0xffb21e,
+              emissiveIntensity: 3.5,
+              roughness: 0.24,
+              transparent: true,
+              opacity: 0.94
+            }));
+            innerFlame.scale.set(0.54, 0.62, 0.68);
+            innerFlame.position.set(0.08, -0.2, 0.22);
+            innerFlame.userData.baseScale = innerFlame.scale.clone();
+            flameGroup.add(innerFlame);
+            torch.add(flameGroup);
+
+            const flameLight = new THREE.PointLight(0xff6b22, 17, 8, 2);
+            flameLight.position.set(0, 2.9, 1.2);
+            torch.add(flameLight);
+            torch.userData.flameGroup = flameGroup;
+            torch.userData.flames = [outerFlame, innerFlame];
+            torch.userData.flameLight = flameLight;
+            return torch;
           };
 
-          const ringsModel = createRings();
+          const ringsModel = createTorch();
           const certificateModel = createCertificate();
           const cupModel = createCup();
           const medalModel = createMedal();
@@ -4761,13 +4795,13 @@
           const slides = [
             {
               model: ringsModel,
-              title: "Олимпийские кольца",
-              description: "Единство, движение и характер большого спорта.",
-              scale: 1.22,
-              y: -0.05,
-              mobileY: -0.85,
-              mobileScale: 0.92,
-              rotation: new THREE.Euler(-0.025, -0.08, -0.02)
+              title: "Олимпийский огонь",
+              description: "Огонь, который передаёт энергию спорта от поколения к поколению.",
+              scale: 0.9,
+              y: -0.15,
+              mobileY: -0.72,
+              mobileScale: 0.82,
+              rotation: new THREE.Euler(-0.025, -0.16, -0.02)
             },
             {
               model: cupModel,
@@ -4902,6 +4936,21 @@
               const scale = slide.scale * responsiveScale * THREE.MathUtils.lerp(0.62, 1, presence);
               slide.model.scale.setScalar(scale);
             });
+
+            const flameMotion = reducedMotion.matches ? 0 : 1;
+            const flameGroup = ringsModel.userData.flameGroup;
+            flameGroup.rotation.z = Math.sin(seconds * 2.7) * 0.045 * flameMotion;
+            ringsModel.userData.flames.forEach((flame, index) => {
+              const base = flame.userData.baseScale;
+              const wave = Math.sin(seconds * (3.4 + index * 0.7) + index * 1.8) * flameMotion;
+              flame.scale.set(
+                base.x * (1 + wave * 0.045),
+                base.y * (1 + wave * 0.07),
+                base.z
+              );
+              flame.rotation.y = Math.sin(seconds * 1.9 + index) * 0.07 * flameMotion;
+            });
+            ringsModel.userData.flameLight.intensity = 16 + Math.sin(seconds * 4.2) * 2.4 * flameMotion;
 
             composition.rotation.y = pointerX * 0.035;
             composition.rotation.x = pointerY * 0.018;
